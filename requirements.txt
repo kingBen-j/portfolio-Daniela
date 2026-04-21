@@ -5,8 +5,10 @@ colorama==0.4.6
 Django==6.0.4
 django-tailwind-cli==4.6.0
 django-typer==3.7.1
+gunicorn==25.3.0
 markdown-it-py==4.0.0
 mdurl==0.1.2
+packaging==26.1
 Pygments==2.20.0
 rich==15.0.0
 semver==3.0.4

@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
   <title>DANY_CAPTIONE</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
     :root {
       --rose: #fa0000;
@@ -32,7 +32,6 @@
     }
     .logo { font-family: 'Bebas Neue', sans-serif; font-size: 1rem; letter-spacing: 0.12em; color: var(--blanc); cursor: pointer; flex-shrink: 0; }
 
-    /* Nav mobile hamburger */
     .nav-links { display: flex; align-items: center; gap: 0.1rem; }
     .nav-link {
       font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase;
@@ -85,8 +84,26 @@
 
     .hero-content { position: relative; z-index: 2; padding: 0 1.2rem; padding-bottom: 7rem; width: 100%; }
     .hero-eyebrow { font-size: 0.55rem; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 0.6rem; }
-    .hero-title-main { font-family: 'Bebas Neue', sans-serif; font-size: clamp(3rem, 18vw, 9rem); line-height: 0.9; color: var(--blanc); }
-    .hero-title-accent { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(3rem, 18vw, 9rem); line-height: 0.9; color: var(--rose); }
+
+    /* ── PLAYFAIR DISPLAY pour le grand titre hero ── */
+    .hero-title-main {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: clamp(3rem, 18vw, 9rem);
+      line-height: 0.9;
+      color: var(--blanc);
+      letter-spacing: -0.01em;
+    }
+    .hero-title-accent {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-weight: 700;
+      font-size: clamp(3rem, 18vw, 9rem);
+      line-height: 0.9;
+      color: var(--rose);
+      letter-spacing: -0.01em;
+    }
+
     .hero-sub { font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-top: 0.4rem; }
     .hero-roles { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-top: 1.2rem; }
     .role-tag { font-size: 0.45rem; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.5); border: 1px solid rgba(255,255,255,0.12); padding: 0.25rem 0.6rem; }
@@ -233,6 +250,11 @@
     .privacy-lbl { font-size: 0.46rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.3); cursor: pointer; margin-left: 0.5rem; flex: 1; line-height: 1.5; }
     .privacy-wrap { display: flex; align-items: flex-start; }
     .btn-submit { background: var(--rose); color: #1a0a08; border: none; padding: 0.9rem 1.8rem; font-size: 0.58rem; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 500; cursor: pointer; font-family: 'DM Sans', sans-serif; white-space: nowrap; }
+    /* success state */
+    .form-success { display: none; text-align: center; padding: 2.5rem 1rem; }
+    .form-success .fs-icon { font-size: 2rem; margin-bottom: 0.8rem; }
+    .form-success .fs-title { font-family: 'Bebas Neue',sans-serif; font-size: 1.5rem; color: var(--blanc); margin-bottom: 0.5rem; }
+    .form-success .fs-sub { font-size: 0.65rem; color: rgba(255,255,255,0.4); letter-spacing: 0.12em; }
 
     .contact-info { padding: 0 1.2rem 3rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
     .info-group h4 { font-family: 'Bebas Neue', sans-serif; font-size: 0.85rem; letter-spacing: 0.18em; color: rgba(255,255,255,0.5); margin-bottom: 1rem; }
@@ -254,7 +276,6 @@
     ══════════════════════════════════════ */
     .dashboard-layout { display: flex; flex-direction: column; min-height: 100vh; background: #080808; }
 
-    /* SIDEBAR / TOP BAR mobile */
     .sidebar {
       background: #0c0c0c; border-bottom: 1px solid rgba(255,255,255,0.06);
       padding: 0; display: flex; flex-direction: row; align-items: center;
@@ -274,6 +295,8 @@
     .sn-item.active { color: var(--blanc); background: rgba(250,0,0,0.06); border-bottom-color: var(--rose); }
     .sn-icon { width: 12px; height: 12px; opacity: 0.6; flex-shrink: 0; }
     .sn-item.active .sn-icon { opacity: 1; }
+    /* Badge compteur sur l'onglet messages */
+    .sn-badge { background: var(--rose); color: #1a0a08; font-size: 0.38rem; font-weight: 700; padding: 0.1rem 0.35rem; border-radius: 8px; letter-spacing: 0; min-width: 16px; text-align: center; }
     .sidebar-footer { padding: 0.6rem 1rem; border-left: 1px solid rgba(255,255,255,0.06); flex-shrink: 0; }
     .btn-retour {
       background: var(--rose); color: #1a0a08; border: none; padding: 0.55rem 0.9rem;
@@ -323,7 +346,6 @@
     .btn-add-projet { background: transparent; border: 1px solid rgba(250,0,0,0.5); color: var(--rose); padding: 0.5rem 0.9rem; font-size: 0.5rem; letter-spacing: 0.16em; text-transform: uppercase; cursor: pointer; transition: all 0.3s; font-family: 'DM Sans',sans-serif; white-space: nowrap; }
     .btn-add-projet:hover { background: var(--rose); color: #1a0a08; }
 
-    /* Formulaire ajout projet */
     .add-form { background: #0a0a0a; border: 1px solid rgba(255,255,255,0.08); padding: 1.5rem 1rem; margin-bottom: 1.2rem; display: none; }
     .add-form.visible { display: block; }
     .af-title { font-family: 'Bebas Neue', sans-serif; font-size: 0.9rem; letter-spacing: 0.1em; color: var(--blanc); margin-bottom: 1.2rem; display: flex; align-items: center; gap: 0.5rem; }
@@ -339,7 +361,6 @@
     .af-textarea { height: 80px; resize: none; }
     .af-full { grid-column: span 1; }
 
-    /* Upload zone */
     .upload-zone { border: 1px dashed rgba(255,255,255,0.12); padding: 1.5rem 1rem; text-align: center; cursor: pointer; transition: all 0.3s; background: rgba(255,255,255,0.02); }
     .upload-zone:hover, .upload-zone.drag-over { border-color: var(--rose); background: rgba(250,0,0,0.04); }
     .upload-zone input[type=file] { display: none; }
@@ -354,7 +375,6 @@
     .btn-cancel { background: transparent; border: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.4); padding: 0.6rem 1rem; font-size: 0.5rem; letter-spacing: 0.18em; text-transform: uppercase; cursor: pointer; font-family: 'DM Sans',sans-serif; }
     .btn-save-projet { background: var(--rose); border: none; color: #1a0a08; padding: 0.6rem 1.2rem; font-size: 0.5rem; letter-spacing: 0.18em; text-transform: uppercase; cursor: pointer; font-family: 'DM Sans',sans-serif; font-weight: 500; }
 
-    /* Liste projets dashboard */
     .projects-list { display: flex; flex-direction: column; gap: 0.5rem; }
     .pl-item { background: #0c0c0c; border: 1px solid rgba(255,255,255,0.05); padding: 0.9rem 1rem; display: flex; align-items: center; gap: 0.9rem; transition: border-color 0.2s; flex-wrap: wrap; }
     .pl-item:hover { border-color: rgba(255,255,255,0.1); }
@@ -371,6 +391,36 @@
 
     .no-projects-dash { text-align: center; padding: 2.5rem 1rem; color: rgba(255,255,255,0.2); }
     .no-projects-dash p { font-size: 0.6rem; letter-spacing: 0.1em; }
+
+    /* ── MESSAGES DASHBOARD ── */
+    .messages-section { background: #111; border: 1px solid rgba(255,255,255,0.06); padding: 1.5rem 1rem; margin-bottom: 1.5rem; }
+    .ms-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 0.6rem; }
+    .ms-title { font-family: 'Bebas Neue', sans-serif; font-size: 0.9rem; letter-spacing: 0.1em; color: var(--blanc); display: flex; align-items: center; gap: 0.6rem; }
+    .ms-count-badge { background: var(--rose); color: #1a0a08; font-family: 'DM Sans',sans-serif; font-size: 0.42rem; font-weight: 700; padding: 0.1rem 0.4rem; border-radius: 8px; }
+    .btn-clear-msgs { background: transparent; border: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.3); padding: 0.4rem 0.7rem; font-size: 0.44rem; letter-spacing: 0.14em; text-transform: uppercase; cursor: pointer; font-family: 'DM Sans',sans-serif; transition: all 0.2s; }
+    .btn-clear-msgs:hover { border-color: rgba(250,0,0,0.4); color: var(--rose); }
+
+    .msg-list { display: flex; flex-direction: column; gap: 0.7rem; }
+    .msg-card { background: #0c0c0c; border: 1px solid rgba(255,255,255,0.05); padding: 1.1rem 1rem; transition: border-color 0.2s; position: relative; }
+    .msg-card:hover { border-color: rgba(250,0,0,0.15); }
+    .msg-card.unread { border-left: 2px solid var(--rose); }
+    .msg-card-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 0.8rem; margin-bottom: 0.7rem; flex-wrap: wrap; }
+    .msg-identity { flex: 1; min-width: 0; }
+    .msg-name { font-size: 0.72rem; color: var(--blanc); margin-bottom: 0.1rem; font-weight: 400; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .msg-email { font-size: 0.48rem; color: rgba(250,0,0,0.6); letter-spacing: 0.08em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .msg-right { display: flex; flex-direction: column; align-items: flex-end; gap: 0.3rem; flex-shrink: 0; }
+    .msg-date { font-size: 0.42rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.2); font-family: 'Courier New', monospace; }
+    .msg-type-tag { font-size: 0.4rem; letter-spacing: 0.15em; text-transform: uppercase; padding: 0.15rem 0.4rem; border: 1px solid rgba(250,0,0,0.25); color: rgba(250,0,0,0.5); white-space: nowrap; }
+    .msg-body { font-size: 0.68rem; color: rgba(255,255,255,0.5); line-height: 1.65; border-top: 1px solid rgba(255,255,255,0.04); padding-top: 0.7rem; }
+    .msg-actions { display: flex; gap: 0.4rem; margin-top: 0.8rem; justify-content: flex-end; }
+    .msg-btn { background: transparent; border: 1px solid rgba(255,255,255,0.08); color: rgba(255,255,255,0.3); padding: 0.28rem 0.55rem; font-size: 0.42rem; letter-spacing: 0.12em; cursor: pointer; font-family: 'DM Sans',sans-serif; transition: all 0.2s; text-transform: uppercase; }
+    .msg-btn:hover { border-color: rgba(255,255,255,0.2); color: rgba(255,255,255,0.6); }
+    .msg-btn.del:hover { border-color: rgba(250,0,0,0.4); color: var(--rose); }
+    .msg-btn.read { font-size: 0.4rem; }
+    .msg-unread-dot { position: absolute; top: 0.9rem; right: 0.9rem; width: 6px; height: 6px; background: var(--rose); border-radius: 50%; }
+    .no-messages { text-align: center; padding: 3rem 1rem; color: rgba(255,255,255,0.15); }
+    .no-messages svg { opacity: 0.1; margin: 0 auto 1rem; display: block; }
+    .no-messages p { font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; }
 
     /* TOAST */
     .toast {
@@ -397,9 +447,7 @@
     .modal-title { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--blanc); }
     .modal-meta { font-size: 0.46rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-top: 0.3rem; }
 
-    /* ═══════ RESPONSIVE BREAKPOINTS ═══════ */
-
-    /* Tablette et desktop (600px+) */
+    /* ═══════ RESPONSIVE ═══════ */
     @media (min-width: 600px) {
       .navbar-custom { padding: 0 2rem; height: 60px; }
       .logo { font-size: 1.1rem; }
@@ -467,7 +515,6 @@
       .archi-band { padding: 3rem 2.5rem; }
     }
 
-    /* Très petits écrans (320px - iPhone 5) */
     @media (max-width: 360px) {
       .navbar-custom { padding: 0 0.8rem; height: 52px; }
       .logo { font-size: 0.85rem; letter-spacing: 0.08em; }
@@ -477,27 +524,18 @@
       .hero-ticker { top: 52px; padding: 0.35rem 0.8rem; gap: 1.5rem; }
       .ticker-item { font-size: 0.42rem; }
       .hero-content { padding: 0 0.9rem; padding-bottom: 7rem; }
-      .hero-eyebrow { font-size: 0.48rem; }
-      .hero-sub { font-size: 0.52rem; letter-spacing: 0.22em; }
-      .role-tag { font-size: 0.4rem; padding: 0.2rem 0.5rem; }
       .hstat { padding: 0.7rem 0.4rem; }
       .hstat-label { font-size: 0.32rem; }
       .hstat-val { font-size: 1.1rem; }
-      .hstat-sub { font-size: 0.3rem; }
-      .vision-body { font-size: 0.78rem; }
       .section-vision, .section-projets, .section-rejoindre, .arsenal-section, .quote-section { padding-left: 0.9rem; padding-right: 0.9rem; }
       .archi-band { padding: 2rem 0.9rem; }
-      .archi-right .dsc { font-size: 0.5rem; }
       .contact-hero, .contact-main, .contact-info { padding-left: 0.9rem; padding-right: 0.9rem; }
       .contact-form-wrap { padding: 1.2rem 0.9rem; }
       .apropos-hero { padding: 72px 0.9rem 2.5rem; }
       .dash-content { padding: 1rem 0.75rem; }
-      .pm-header { gap: 0.5rem; }
-      .btn-add-projet { font-size: 0.44rem; padding: 0.45rem 0.7rem; }
       .sc-value { font-size: 1.5rem; }
       .toast { left: 0.7rem; right: 0.7rem; font-size: 0.55rem; }
       .contact-info { grid-template-columns: 1fr; gap: 1.5rem; }
-      .info-item .iv { font-size: 0.65rem; }
     }
   </style>
 </head>
@@ -518,12 +556,11 @@
   </div>
 </div>
 
-<!-- ════════════════════════════════════
-     PORTFOLIO (public)
-════════════════════════════════════ -->
+<!-- ══════════════════════════════════════
+     PORTFOLIO
+══════════════════════════════════════ -->
 <div class="screen active" id="screen-portfolio">
 
-  <!-- NAV -->
   <nav class="navbar-custom">
     <div class="logo" onclick="pfShowPage('home')">DANY_CAPTION</div>
     <div class="nav-links">
@@ -536,7 +573,7 @@
     </div>
   </nav>
 
-  <!-- ── PAGE HOME ── -->
+  <!-- PAGE HOME -->
   <div class="pf-page active" id="pf-home">
     <section class="hero-section">
       <div class="hero-bg"></div>
@@ -559,26 +596,10 @@
         </div>
       </div>
       <div class="hero-stats-band">
-        <div class="hstat">
-          <div class="hstat-label">VUES TOTALES</div>
-          <div class="hstat-val" id="heroTotalViews">0</div>
-          <div class="hstat-sub">TOUS RÉSEAUX</div>
-        </div>
-        <div class="hstat">
-          <div class="hstat-label">INSTAGRAM</div>
-          <div class="hstat-val" id="heroIGViews">0</div>
-          <div class="hstat-sub">VUES</div>
-        </div>
-        <div class="hstat">
-          <div class="hstat-label">TIKTOK</div>
-          <div class="hstat-val" id="heroTKViews">0</div>
-          <div class="hstat-sub">VUES</div>
-        </div>
-        <div class="hstat">
-          <div class="hstat-label">PROJETS</div>
-          <div class="hstat-val" id="heroProjetsCount">0</div>
-          <div class="hstat-sub">EN LIGNE</div>
-        </div>
+        <div class="hstat"><div class="hstat-label">VUES TOTALES</div><div class="hstat-val" id="heroTotalViews">0</div><div class="hstat-sub">TOUS RÉSEAUX</div></div>
+        <div class="hstat"><div class="hstat-label">INSTAGRAM</div><div class="hstat-val" id="heroIGViews">0</div><div class="hstat-sub">VUES</div></div>
+        <div class="hstat"><div class="hstat-label">TIKTOK</div><div class="hstat-val" id="heroTKViews">0</div><div class="hstat-sub">VUES</div></div>
+        <div class="hstat"><div class="hstat-label">PROJETS</div><div class="hstat-val" id="heroProjetsCount">0</div><div class="hstat-sub">EN LIGNE</div></div>
       </div>
     </section>
 
@@ -592,10 +613,7 @@
       </div>
       <div>
         <div class="tl-card">
-          <div class="tl-header">
-            <div class="tl-h-title">TIMELINE — SEQUENCE 01</div>
-            <div class="tl-timecode-main">00:02:34:12</div>
-          </div>
+          <div class="tl-header"><div class="tl-h-title">TIMELINE — SEQUENCE 01</div><div class="tl-timecode-main">00:02:34:12</div></div>
           <div class="tl-row"><div class="tl-lbl">VIDEO A</div><div class="tl-track"><div class="tl-clip" style="left:0;width:25%"></div><div class="tl-clip" style="left:30%;width:40%"></div><div class="tl-clip" style="left:75%;width:20%"></div><div class="tl-ph"></div></div><div class="tl-tc">04:12</div></div>
           <div class="tl-row"><div class="tl-lbl">VIDEO B</div><div class="tl-track"><div class="tl-clip2" style="left:10%;width:20%"></div><div class="tl-clip2" style="left:40%;width:30%"></div><div class="tl-clip2" style="left:80%;width:15%"></div><div class="tl-ph"></div></div><div class="tl-tc">04:12</div></div>
           <div class="tl-row"><div class="tl-lbl">AUDIO</div><div class="tl-track" style="background:rgba(255,255,255,0.03)"><svg width="100%" height="5" viewBox="0 0 300 5" preserveAspectRatio="none" style="position:absolute;opacity:0.3"><path d="M0 2.5 Q10 0 20 2.5 Q30 5 40 2.5 Q50 0 60 2.5 Q70 5 80 2.5 Q90 0 100 2.5 Q110 5 120 2.5 Q130 0 140 2.5 Q150 5 160 2.5 Q170 0 180 2.5 Q190 5 200 2.5 Q210 0 220 2.5 Q230 5 240 2.5 Q250 0 260 2.5 Q270 5 280 2.5 Q290 0 300 2.5" stroke="rgba(250,0,0,0.6)" fill="none" stroke-width="1.5"/></svg><div class="tl-ph"></div></div><div class="tl-tc">04:12</div></div>
@@ -610,24 +628,13 @@
       </div>
     </section>
 
-    <!-- PROJETS RÉCENTS -->
     <section class="section-projets">
       <div class="section-header">
-        <div>
-          <div class="section-label">MES DERNIÈRES RÉALISATIONS</div>
-          <h2 class="section-title">PROJETS</h2>
-        </div>
+        <div><div class="section-label">MES DERNIÈRES RÉALISATIONS</div><h2 class="section-title">PROJETS</h2></div>
         <div class="section-count" id="homeProjetCount">— PROJETS</div>
       </div>
-      <div class="projets-grid" id="homeProjetGrid">
-        <div class="no-projets">
-          <h3>AUCUN PROJET ENCORE</h3>
-          <p>AJOUTEZ VOS PROJETS DEPUIS LE DASHBOARD</p>
-        </div>
-      </div>
-      <div style="text-align:center;margin-top:1.8rem;">
-        <button class="btn-primary" onclick="pfShowPage('realisations')">VOIR TOUTES LES RÉALISATIONS</button>
-      </div>
+      <div class="projets-grid" id="homeProjetGrid"><div class="no-projets"><h3>AUCUN PROJET ENCORE</h3><p>AJOUTEZ VOS PROJETS DEPUIS LE DASHBOARD</p></div></div>
+      <div style="text-align:center;margin-top:1.8rem;"><button class="btn-primary" onclick="pfShowPage('realisations')">VOIR TOUTES LES RÉALISATIONS</button></div>
     </section>
 
     <div class="archi-band">
@@ -642,8 +649,8 @@
       </div>
       <div>
         <div class="join-form">
-          <input class="join-input" type="email" placeholder="VOTRE EMAIL" />
-          <button class="join-btn" onclick="pfShowPage('contact')">CONTACTER</button>
+          <input class="join-input" type="email" id="joinEmail" placeholder="VOTRE EMAIL" />
+          <button class="join-btn" onclick="handleJoinEmail()">CONTACTER</button>
         </div>
       </div>
     </section>
@@ -655,7 +662,7 @@
     </footer>
   </div>
 
-  <!-- ── PAGE RÉALISATIONS ── -->
+  <!-- PAGE RÉALISATIONS -->
   <div class="pf-page" id="pf-realisations">
     <div style="padding-top:56px;">
       <div style="padding:3rem 1.2rem 1.5rem;">
@@ -663,23 +670,14 @@
         <div style="font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5rem,14vw,7rem);color:var(--blanc);letter-spacing:0.03em;line-height:0.9;">RÉALISATIONS // <span style="color:var(--rose);font-family:'Cormorant Garamond',serif;font-style:italic;">Archives</span></div>
       </div>
       <section class="section-projets" style="padding-top:0;">
-        <div class="section-header">
-          <div><div class="section-label">TOUS LES PROJETS</div></div>
-          <div class="section-count" id="realProjetCount">— PROJETS</div>
-        </div>
-        <div class="projets-grid" id="realProjetGrid">
-          <div class="no-projets"><h3>AUCUN PROJET ENCORE</h3><p>AJOUTEZ VOS PROJETS DEPUIS LE DASHBOARD</p></div>
-        </div>
+        <div class="section-header"><div><div class="section-label">TOUS LES PROJETS</div></div><div class="section-count" id="realProjetCount">— PROJETS</div></div>
+        <div class="projets-grid" id="realProjetGrid"><div class="no-projets"><h3>AUCUN PROJET ENCORE</h3><p>AJOUTEZ VOS PROJETS DEPUIS LE DASHBOARD</p></div></div>
       </section>
     </div>
-    <footer>
-      <div class="copy">© DANY CAPTIONE. TOUS DROITS RÉSERVÉS</div>
-      <div class="meta-row"><span class="meta-item">REAL MAKER</span><span class="meta-item">FREELANCE</span></div>
-      <div class="socials"><a class="social" href="#">@INSTAGRAM</a><a class="social" href="#">TIKTOK</a></div>
-    </footer>
+    <footer><div class="copy">© DANY CAPTIONE. TOUS DROITS RÉSERVÉS</div><div class="meta-row"><span class="meta-item">REAL MAKER</span><span class="meta-item">FREELANCE</span></div><div class="socials"><a class="social" href="#">@INSTAGRAM</a><a class="social" href="#">TIKTOK</a></div></footer>
   </div>
 
-  <!-- ── PAGE PROFIL ── -->
+  <!-- PAGE PROFIL -->
   <div class="pf-page" id="pf-profil">
     <div class="apropos-hero">
       <div class="apropos-intro">
@@ -703,24 +701,9 @@
       <h2 class="arsenal-title">LE STACK</h2>
       <p class="arsenal-desc">CHAQUE OUTIL MAÎTRISÉ POUR PRODUIRE DU CONTENU QUI PERFORME ET QUI DURE.</p>
       <div class="arsenal-grid">
-        <div class="arsenal-card">
-          <div class="arsenal-num">01</div>
-          <svg class="arsenal-icon" viewBox="0 0 28 28" fill="none"><rect x="2" y="5" width="24" height="18" rx="2" stroke="rgba(255,47,0,0.7)" stroke-width="1.5"/><polygon points="11,10 11,18 19,14" fill="rgba(255,47,0,0.5)"/></svg>
-          <h3>MONTAGE & POST-PROD</h3>
-          <ul><li>PREMIERE PRO / RUSH</li><li>DAVINCI RESOLVE</li><li>CAPCUT</li><li>AFTER EFFECTS</li></ul>
-        </div>
-        <div class="arsenal-card">
-          <div class="arsenal-num">02</div>
-          <svg class="arsenal-icon" viewBox="0 0 28 28" fill="none"><circle cx="9" cy="9" r="4" stroke="rgba(255,47,0,0.7)" stroke-width="1.5"/><circle cx="21" cy="7" r="3" stroke="rgba(232,160,144,0.4)" stroke-width="1"/><circle cx="20" cy="20" r="4" stroke="rgba(232,160,144,0.4)" stroke-width="1.2"/></svg>
-          <h3>PLATEFORMES & CM</h3>
-          <ul><li>INSTAGRAM / REELS</li><li>TIKTOK / SHORTS</li><li>META BUSINESS SUITE</li><li>NOTION / TRELLO</li></ul>
-        </div>
-        <div class="arsenal-card">
-          <div class="arsenal-num">03</div>
-          <svg class="arsenal-icon" viewBox="0 0 28 28" fill="none"><rect x="4" y="4" width="20" height="20" rx="2" stroke="rgba(253,46,0,0.7)" stroke-width="1.5"/><circle cx="10" cy="10" r="3" stroke="rgba(232,160,144,0.5)" stroke-width="1"/></svg>
-          <h3>CRÉATION VISUELLE</h3>
-          <ul><li>CANVA PRO</li><li>ADOBE PHOTOSHOP</li><li>LIGHTROOM</li><li>FIGMA</li></ul>
-        </div>
+        <div class="arsenal-card"><div class="arsenal-num">01</div><svg class="arsenal-icon" viewBox="0 0 28 28" fill="none"><rect x="2" y="5" width="24" height="18" rx="2" stroke="rgba(255,47,0,0.7)" stroke-width="1.5"/><polygon points="11,10 11,18 19,14" fill="rgba(255,47,0,0.5)"/></svg><h3>MONTAGE & POST-PROD</h3><ul><li>PREMIERE PRO / RUSH</li><li>DAVINCI RESOLVE</li><li>CAPCUT</li><li>AFTER EFFECTS</li></ul></div>
+        <div class="arsenal-card"><div class="arsenal-num">02</div><svg class="arsenal-icon" viewBox="0 0 28 28" fill="none"><circle cx="9" cy="9" r="4" stroke="rgba(255,47,0,0.7)" stroke-width="1.5"/><circle cx="21" cy="7" r="3" stroke="rgba(232,160,144,0.4)" stroke-width="1"/><circle cx="20" cy="20" r="4" stroke="rgba(232,160,144,0.4)" stroke-width="1.2"/></svg><h3>PLATEFORMES & CM</h3><ul><li>INSTAGRAM / REELS</li><li>TIKTOK / SHORTS</li><li>META BUSINESS SUITE</li><li>NOTION / TRELLO</li></ul></div>
+        <div class="arsenal-card"><div class="arsenal-num">03</div><svg class="arsenal-icon" viewBox="0 0 28 28" fill="none"><rect x="4" y="4" width="20" height="20" rx="2" stroke="rgba(253,46,0,0.7)" stroke-width="1.5"/><circle cx="10" cy="10" r="3" stroke="rgba(232,160,144,0.5)" stroke-width="1"/></svg><h3>CRÉATION VISUELLE</h3><ul><li>CANVA PRO</li><li>ADOBE PHOTOSHOP</li><li>LIGHTROOM</li><li>FIGMA</li></ul></div>
       </div>
     </section>
     <section class="quote-section">
@@ -730,7 +713,7 @@
     <footer><div class="copy">© DANY CAPTIONE. TOUS DROITS RÉSERVÉS</div><div class="meta-row"><span class="meta-item">REAL MAKER</span><span class="meta-item">FREELANCE</span></div><div class="socials"><a class="social" href="#">@INSTAGRAM</a><a class="social" href="#">TIKTOK</a></div></footer>
   </div>
 
-  <!-- ── PAGE CONTACT ── -->
+  <!-- PAGE CONTACT -->
   <div class="pf-page" id="pf-contact">
     <div class="contact-hero">
       <div>
@@ -749,19 +732,33 @@
         <div class="contact-meta-badge"><div class="m-lbl">POUR QUI ?</div><div class="m-val">MARQUES · CRÉATEURS<br>AGENCES · ARTISTES</div></div>
       </div>
       <div class="contact-form-wrap">
-        <div class="form-eyebrow">TRANSMISSION INITIALE</div>
-        <div class="form-title">Parlons de ton projet</div>
-        <div class="form-row">
-          <div><label class="form-label">IDENTITÉ</label><input class="form-input" type="text" placeholder="NOM / MARQUE..."/></div>
-          <div><label class="form-label">EMAIL</label><input class="form-input" type="email" placeholder="TON ADRESSE EMAIL"/></div>
+        <!-- Formulaire -->
+        <div id="contactFormContainer">
+          <div class="form-eyebrow">TRANSMISSION INITIALE</div>
+          <div class="form-title">Parlons de ton projet</div>
+          <div class="form-row">
+            <div><label class="form-label">IDENTITÉ</label><input class="form-input" id="cfName" type="text" placeholder="NOM / MARQUE..."/></div>
+            <div><label class="form-label">EMAIL</label><input class="form-input" id="cfEmail" type="email" placeholder="TON ADRESSE EMAIL"/></div>
+          </div>
+          <div class="form-field"><label class="form-label">TYPE DE PROJET</label>
+            <select class="form-select" id="cfType">
+              <option>MONTAGE VIDÉO</option><option>COMMUNITY MANAGEMENT</option>
+              <option>CRÉATION DE CONTENU</option><option>STRATÉGIE ÉDITORIALE</option>
+              <option>COLLABORATION CRÉATIVE</option>
+            </select>
+          </div>
+          <div class="form-field"><label class="form-label">TON MESSAGE</label><textarea class="form-textarea" id="cfMessage" placeholder="DÉCRIS TON PROJET..."></textarea></div>
+          <div class="form-footer">
+            <div class="privacy-wrap"><div class="privacy-box" id="privacyBox" onclick="this.classList.toggle('checked')"></div><span class="privacy-lbl">J'ACCEPTE QUE MES DONNÉES SOIENT UTILISÉES POUR ME RECONTACTER</span></div>
+            <button class="btn-submit" onclick="submitContactForm()">ENVOYER</button>
+          </div>
         </div>
-        <div class="form-field"><label class="form-label">TYPE DE PROJET</label>
-          <select class="form-select"><option>MONTAGE VIDÉO</option><option>COMMUNITY MANAGEMENT</option><option>CRÉATION DE CONTENU</option><option>STRATÉGIE ÉDITORIALE</option><option>COLLABORATION CRÉATIVE</option></select>
-        </div>
-        <div class="form-field"><label class="form-label">TON MESSAGE</label><textarea class="form-textarea" placeholder="DÉCRIS TON PROJET..."></textarea></div>
-        <div class="form-footer">
-          <div class="privacy-wrap"><div class="privacy-box" onclick="this.classList.toggle('checked')"></div><span class="privacy-lbl">J'ACCEPTE QUE MES DONNÉES SOIENT UTILISÉES POUR ME RECONTACTER</span></div>
-          <button class="btn-submit">ENVOYER</button>
+        <!-- Succès -->
+        <div class="form-success" id="formSuccess">
+          <div class="fs-icon">✦</div>
+          <div class="fs-title">MESSAGE TRANSMIS</div>
+          <div class="fs-sub">JE REVIENS VERS TOI SOUS 24–48H</div>
+          <button class="btn-primary" style="margin-top:1.5rem;" onclick="resetContactForm()">ENVOYER UN AUTRE MESSAGE</button>
         </div>
       </div>
     </div>
@@ -781,18 +778,14 @@
 </div><!-- end screen-portfolio -->
 
 
-<!-- ════════════════════════════════════
+<!-- ══════════════════════════════════════
      DASHBOARD
-════════════════════════════════════ -->
+══════════════════════════════════════ -->
 <div class="screen" id="screen-dashboard">
   <div class="dashboard-layout">
 
-    <!-- SIDEBAR / TOPBAR -->
     <aside class="sidebar">
-      <div class="sidebar-logo">
-        <div class="sl-name">DANY_CAPTION</div>
-        <div class="sl-sub">EDITORIAL STUDIO</div>
-      </div>
+      <div class="sidebar-logo"><div class="sl-name">DANY_CAPTION</div><div class="sl-sub">EDITORIAL STUDIO</div></div>
       <nav class="sidebar-nav">
         <div class="sn-item active" id="sn-dashboard" onclick="showDashSection('dashboard')">
           <svg class="sn-icon" viewBox="0 0 14 14" fill="none"><rect x="1" y="1" width="5" height="5" stroke="currentColor" stroke-width="1"/><rect x="8" y="1" width="5" height="5" stroke="currentColor" stroke-width="1"/><rect x="1" y="8" width="5" height="5" stroke="currentColor" stroke-width="1"/><rect x="8" y="8" width="5" height="5" stroke="currentColor" stroke-width="1"/></svg>
@@ -806,222 +799,157 @@
           <svg class="sn-icon" viewBox="0 0 14 14" fill="none"><rect x="1" y="3" width="12" height="9" rx="1" stroke="currentColor" stroke-width="1"/><polygon points="6,6 6,9.5 9.5,7.5" fill="currentColor" opacity="0.6"/></svg>
           PROJETS
         </div>
+        <div class="sn-item" id="sn-messages" onclick="showDashSection('messages')">
+          <svg class="sn-icon" viewBox="0 0 14 14" fill="none"><rect x="1" y="2" width="12" height="9" rx="1" stroke="currentColor" stroke-width="1"/><path d="M 1 5 L 7 8 L 13 5" stroke="currentColor" stroke-width="1"/></svg>
+          MESSAGES
+          <span class="sn-badge" id="snMsgBadge" style="display:none;">0</span>
+        </div>
         <div class="sn-item" id="sn-analytics" onclick="showDashSection('analytics')">
           <svg class="sn-icon" viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="1"/><path d="M 7 2 L 7 7 L 11 7" stroke="currentColor" stroke-width="1"/></svg>
           ANALYTICS
         </div>
       </nav>
-      <div class="sidebar-footer">
-        <button class="btn-retour" onclick="showScreen('portfolio')">← PORTFOLIO</button>
-      </div>
+      <div class="sidebar-footer"><button class="btn-retour" onclick="showScreen('portfolio')">← PORTFOLIO</button></div>
     </aside>
 
-    <!-- CONTENU DASHBOARD -->
     <main class="dash-content">
 
-      <!-- ── VUE DASHBOARD ── -->
+      <!-- VUE DASHBOARD -->
       <div class="dash-section active" id="ds-dashboard">
         <div class="dash-page-title">DASHBOARD</div>
         <div class="dash-page-sub">ANALYSE DE PERFORMANCE · STUDIO EDITORIAL DANY CAPTIONE</div>
-
         <div class="stats-grid">
-          <div class="stat-card">
-            <div class="sc-label">VUES TOTALES</div>
-            <div class="sc-value accent" id="dTotalViews">0</div>
-            <div class="sc-sub">TOUS RÉSEAUX</div>
-          </div>
-          <div class="stat-card">
-            <div class="sc-label">PROJETS PUBLIÉS</div>
-            <div class="sc-value" id="dProjetsCount">0</div>
-            <div class="sc-sub">EN LIGNE</div>
-          </div>
-          <div class="stat-card">
-            <div class="sc-label">INSTAGRAM</div>
-            <div class="sc-value" id="dIGViews">0</div>
-            <div class="sc-sub">VUES</div>
-          </div>
-          <div class="stat-card">
-            <div class="sc-label">TIKTOK</div>
-            <div class="sc-value" id="dTKViews">0</div>
-            <div class="sc-sub">VUES</div>
-          </div>
+          <div class="stat-card"><div class="sc-label">VUES TOTALES</div><div class="sc-value accent" id="dTotalViews">0</div><div class="sc-sub">TOUS RÉSEAUX</div></div>
+          <div class="stat-card"><div class="sc-label">PROJETS PUBLIÉS</div><div class="sc-value" id="dProjetsCount">0</div><div class="sc-sub">EN LIGNE</div></div>
+          <div class="stat-card"><div class="sc-label">INSTAGRAM</div><div class="sc-value" id="dIGViews">0</div><div class="sc-sub">VUES</div></div>
+          <div class="stat-card"><div class="sc-label">MESSAGES REÇUS</div><div class="sc-value accent" id="dMsgCount">0</div><div class="sc-sub">NON LUS</div></div>
         </div>
-
         <div class="projets-manager">
-          <div class="pm-header">
-            <div class="pm-title">DERNIERS PROJETS</div>
-            <button class="btn-add-projet" onclick="showDashSection('projets')">GÉRER →</button>
-          </div>
-          <div id="dashRecentProjets" class="projects-list">
-            <div class="no-projects-dash"><p>AUCUN PROJET — AJOUTEZ-EN DEPUIS "PROJETS"</p></div>
-          </div>
+          <div class="pm-header"><div class="pm-title">DERNIERS PROJETS</div><button class="btn-add-projet" onclick="showDashSection('projets')">GÉRER →</button></div>
+          <div id="dashRecentProjets" class="projects-list"><div class="no-projects-dash"><p>AUCUN PROJET — AJOUTEZ-EN DEPUIS "PROJETS"</p></div></div>
+        </div>
+        <!-- Aperçu derniers messages -->
+        <div class="projets-manager">
+          <div class="pm-header"><div class="pm-title">DERNIERS MESSAGES</div><button class="btn-add-projet" onclick="showDashSection('messages')">VOIR TOUT →</button></div>
+          <div id="dashRecentMessages" class="projects-list"><div class="no-projects-dash"><p>AUCUN MESSAGE REÇU</p></div></div>
         </div>
       </div>
 
-      <!-- ── VUE STATISTIQUES ── -->
+      <!-- VUE STATISTIQUES -->
       <div class="dash-section" id="ds-stats">
         <div class="dash-page-title">STATISTIQUES</div>
         <div class="dash-page-sub">SAISISSEZ VOS VUES PAR RÉSEAU · ELLES S'AFFICHERONT SUR LE PORTFOLIO</div>
-
         <div class="network-section">
           <div class="ns-title">VUES PAR RÉSEAU <span>MISE À JOUR MANUELLE</span></div>
           <div class="network-grid">
-
             <div class="network-card">
-              <div class="nc-header">
-                <div class="nc-platform"><div class="nc-dot" style="background:#e1306c;"></div><div class="nc-name">INSTAGRAM</div></div>
-                <svg width="16" height="16" viewBox="0 0 18 18" fill="none" opacity="0.3"><rect x="2" y="2" width="14" height="14" rx="4" stroke="white" stroke-width="1.2"/><circle cx="9" cy="9" r="3.5" stroke="white" stroke-width="1.2"/><circle cx="13" cy="5" r="1" fill="white"/></svg>
-              </div>
+              <div class="nc-header"><div class="nc-platform"><div class="nc-dot" style="background:#e1306c;"></div><div class="nc-name">INSTAGRAM</div></div></div>
               <div class="nc-val" id="igDisplay">0</div>
               <div style="font-size:0.42rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.2);">VUES CUMULÉES</div>
-              <div class="nc-input-wrap">
-                <input class="nc-input" type="number" id="igInput" placeholder="ex: 125000" min="0"/>
-                <button class="nc-save" onclick="saveNetwork('ig')">OK</button>
-              </div>
+              <div class="nc-input-wrap"><input class="nc-input" type="number" id="igInput" placeholder="ex: 125000" min="0"/><button class="nc-save" onclick="saveNetwork('ig')">OK</button></div>
             </div>
-
             <div class="network-card">
-              <div class="nc-header">
-                <div class="nc-platform"><div class="nc-dot" style="background:#69c9d0;"></div><div class="nc-name">TIKTOK</div></div>
-                <svg width="16" height="16" viewBox="0 0 18 18" fill="none" opacity="0.3"><path d="M 12 4 C 12 6 14 7 16 7 L 16 10 C 14 10 12.5 9.5 11.5 8.5 L 11.5 13 C 11.5 15 10 17 8 17 C 6 17 4 15 4 13 C 4 11 6 9 8 9 L 9.5 9.3 L 9.5 12.3 C 9.1 12.1 8.6 12 8 12 C 7 12 6.5 12.5 6.5 13 C 6.5 13.5 7 14 8 14 C 9 14 9.5 13.5 9.5 13 L 9.5 4 Z" stroke="white" stroke-width="1"/></svg>
-              </div>
+              <div class="nc-header"><div class="nc-platform"><div class="nc-dot" style="background:#69c9d0;"></div><div class="nc-name">TIKTOK</div></div></div>
               <div class="nc-val" id="tkDisplay">0</div>
               <div style="font-size:0.42rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.2);">VUES CUMULÉES</div>
-              <div class="nc-input-wrap">
-                <input class="nc-input" type="number" id="tkInput" placeholder="ex: 280000" min="0"/>
-                <button class="nc-save" onclick="saveNetwork('tk')">OK</button>
-              </div>
+              <div class="nc-input-wrap"><input class="nc-input" type="number" id="tkInput" placeholder="ex: 280000" min="0"/><button class="nc-save" onclick="saveNetwork('tk')">OK</button></div>
             </div>
-
             <div class="network-card">
-              <div class="nc-header">
-                <div class="nc-platform"><div class="nc-dot" style="background:#ff0000;"></div><div class="nc-name">YOUTUBE</div></div>
-                <svg width="16" height="16" viewBox="0 0 18 18" fill="none" opacity="0.3"><rect x="2" y="4" width="14" height="10" rx="2" stroke="white" stroke-width="1.2"/><polygon points="7.5,6.5 7.5,11.5 12,9" fill="white" opacity="0.5"/></svg>
-              </div>
+              <div class="nc-header"><div class="nc-platform"><div class="nc-dot" style="background:#ff0000;"></div><div class="nc-name">YOUTUBE</div></div></div>
               <div class="nc-val" id="ytDisplay">0</div>
               <div style="font-size:0.42rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.2);">VUES CUMULÉES</div>
-              <div class="nc-input-wrap">
-                <input class="nc-input" type="number" id="ytInput" placeholder="ex: 45000" min="0"/>
-                <button class="nc-save" onclick="saveNetwork('yt')">OK</button>
-              </div>
+              <div class="nc-input-wrap"><input class="nc-input" type="number" id="ytInput" placeholder="ex: 45000" min="0"/><button class="nc-save" onclick="saveNetwork('yt')">OK</button></div>
             </div>
-
             <div class="network-card">
-              <div class="nc-header">
-                <div class="nc-platform"><div class="nc-dot" style="background:#1877f2;"></div><div class="nc-name">FACEBOOK</div></div>
-                <svg width="16" height="16" viewBox="0 0 18 18" fill="none" opacity="0.3"><circle cx="9" cy="9" r="7" stroke="white" stroke-width="1.2"/></svg>
-              </div>
+              <div class="nc-header"><div class="nc-platform"><div class="nc-dot" style="background:#1877f2;"></div><div class="nc-name">FACEBOOK</div></div></div>
               <div class="nc-val" id="fbDisplay">0</div>
               <div style="font-size:0.42rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.2);">VUES CUMULÉES</div>
-              <div class="nc-input-wrap">
-                <input class="nc-input" type="number" id="fbInput" placeholder="ex: 32000" min="0"/>
-                <button class="nc-save" onclick="saveNetwork('fb')">OK</button>
-              </div>
+              <div class="nc-input-wrap"><input class="nc-input" type="number" id="fbInput" placeholder="ex: 32000" min="0"/><button class="nc-save" onclick="saveNetwork('fb')">OK</button></div>
             </div>
-
             <div class="network-card">
-              <div class="nc-header">
-                <div class="nc-platform"><div class="nc-dot" style="background:#fff;"></div><div class="nc-name">TWITTER / X</div></div>
-              </div>
+              <div class="nc-header"><div class="nc-platform"><div class="nc-dot" style="background:#fff;"></div><div class="nc-name">TWITTER / X</div></div></div>
               <div class="nc-val" id="twDisplay">0</div>
               <div style="font-size:0.42rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.2);">IMPRESSIONS</div>
-              <div class="nc-input-wrap">
-                <input class="nc-input" type="number" id="twInput" placeholder="ex: 18000" min="0"/>
-                <button class="nc-save" onclick="saveNetwork('tw')">OK</button>
-              </div>
+              <div class="nc-input-wrap"><input class="nc-input" type="number" id="twInput" placeholder="ex: 18000" min="0"/><button class="nc-save" onclick="saveNetwork('tw')">OK</button></div>
             </div>
-
             <div class="network-card">
-              <div class="nc-header">
-                <div class="nc-platform"><div class="nc-dot" style="background:#888;"></div><div class="nc-name">AUTRE</div></div>
-              </div>
+              <div class="nc-header"><div class="nc-platform"><div class="nc-dot" style="background:#888;"></div><div class="nc-name">AUTRE</div></div></div>
               <div class="nc-val" id="otDisplay">0</div>
               <div style="font-size:0.42rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.2);">AUTRES VUES</div>
-              <div class="nc-input-wrap">
-                <input class="nc-input" type="number" id="otInput" placeholder="Autre..." min="0"/>
-                <button class="nc-save" onclick="saveNetwork('ot')">OK</button>
-              </div>
+              <div class="nc-input-wrap"><input class="nc-input" type="number" id="otInput" placeholder="Autre..." min="0"/><button class="nc-save" onclick="saveNetwork('ot')">OK</button></div>
             </div>
-
           </div>
         </div>
       </div>
 
-      <!-- ── VUE PROJETS ── -->
+      <!-- VUE PROJETS -->
       <div class="dash-section" id="ds-projets">
         <div class="dash-page-title">PROJETS</div>
         <div class="dash-page-sub">GÉREZ VOS RÉALISATIONS · APPARAISSENT EN TEMPS RÉEL SUR LE PORTFOLIO</div>
-
         <div class="projets-manager">
           <div class="pm-header">
             <div class="pm-title">MES PROJETS <span id="projetsBadge" style="font-family:'DM Sans',sans-serif;font-weight:300;font-size:0.58rem;color:rgba(255,255,255,0.25);letter-spacing:0.1em;"></span></div>
             <button class="btn-add-projet" onclick="toggleAddForm()">+ AJOUTER</button>
           </div>
-
           <div class="add-form" id="addForm">
             <div class="af-title">NOUVEAU PROJET</div>
             <div class="af-grid">
-              <div class="af-field">
-                <label class="af-label">TITRE DU PROJET *</label>
-                <input class="af-input" id="afTitle" type="text" placeholder="Ex: Aftermovie Festival..."/>
-              </div>
-              <div class="af-field">
-                <label class="af-label">TYPE DE CONTENU</label>
+              <div class="af-field"><label class="af-label">TITRE DU PROJET *</label><input class="af-input" id="afTitle" type="text" placeholder="Ex: Aftermovie Festival..."/></div>
+              <div class="af-field"><label class="af-label">TYPE DE CONTENU</label>
                 <select class="af-select" id="afType">
-                  <option value="MONTAGE VIDÉO">MONTAGE VIDÉO</option>
-                  <option value="REEL">REEL</option>
-                  <option value="COURT-MÉTRAGE">COURT-MÉTRAGE</option>
-                  <option value="AFTERMOVIE">AFTERMOVIE</option>
-                  <option value="TIKTOK">TIKTOK</option>
-                  <option value="PLANNING ÉDITORIAL">PLANNING ÉDITORIAL</option>
-                  <option value="COMMUNITY MANAGEMENT">CM</option>
-                  <option value="BRANDING">BRANDING</option>
-                  <option value="AUTRE">AUTRE</option>
+                  <option value="MONTAGE VIDÉO">MONTAGE VIDÉO</option><option value="REEL">REEL</option>
+                  <option value="COURT-MÉTRAGE">COURT-MÉTRAGE</option><option value="AFTERMOVIE">AFTERMOVIE</option>
+                  <option value="TIKTOK">TIKTOK</option><option value="PLANNING ÉDITORIAL">PLANNING ÉDITORIAL</option>
+                  <option value="COMMUNITY MANAGEMENT">CM</option><option value="BRANDING">BRANDING</option><option value="AUTRE">AUTRE</option>
                 </select>
               </div>
-              <div class="af-field">
-                <label class="af-label">CLIENT / MARQUE</label>
-                <input class="af-input" id="afClient" type="text" placeholder="Nom du client..."/>
-              </div>
-              <div class="af-field">
-                <label class="af-label">DATE / PÉRIODE</label>
-                <input class="af-input" id="afDate" type="text" placeholder="Ex: Oct. 2024"/>
-              </div>
-              <div class="af-field af-full">
-                <label class="af-label">DESCRIPTION COURTE</label>
-                <textarea class="af-textarea" id="afDesc" placeholder="Décris brièvement le projet..."></textarea>
-              </div>
+              <div class="af-field"><label class="af-label">CLIENT / MARQUE</label><input class="af-input" id="afClient" type="text" placeholder="Nom du client..."/></div>
+              <div class="af-field"><label class="af-label">DATE / PÉRIODE</label><input class="af-input" id="afDate" type="text" placeholder="Ex: Oct. 2024"/></div>
+              <div class="af-field af-full"><label class="af-label">DESCRIPTION COURTE</label><textarea class="af-textarea" id="afDesc" placeholder="Décris brièvement le projet..."></textarea></div>
             </div>
-
             <div class="af-field">
               <label class="af-label" style="margin-bottom:0.6rem;">VISUEL / VIDÉO DU PROJET</label>
               <div class="upload-zone" id="uploadZone" onclick="document.getElementById('fileInput').click()">
                 <input type="file" id="fileInput" accept="image/*,video/*" onchange="handleFileUpload(event)"/>
-                <div class="upload-icon">
-                  <svg width="28" height="28" viewBox="0 0 32 32" fill="none"><rect x="3" y="6" width="26" height="20" rx="2" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/><path d="M 16 11 L 16 21 M 11 16 L 16 11 L 21 16" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/></svg>
-                </div>
+                <div class="upload-icon"><svg width="28" height="28" viewBox="0 0 32 32" fill="none"><rect x="3" y="6" width="26" height="20" rx="2" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/><path d="M 16 11 L 16 21 M 11 16 L 16 11 L 21 16" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/></svg></div>
                 <div class="upload-text">CLIQUER POUR AJOUTER UN FICHIER</div>
                 <div class="upload-sub">IMAGE OU VIDÉO — MAX 50MB</div>
-                <div class="upload-preview" id="uploadPreview">
-                  <div id="previewContent"></div>
-                  <div class="file-name" id="previewName"></div>
-                </div>
+                <div class="upload-preview" id="uploadPreview"><div id="previewContent"></div><div class="file-name" id="previewName"></div></div>
               </div>
             </div>
-
             <div class="af-actions">
               <button class="btn-cancel" onclick="toggleAddForm()">ANNULER</button>
               <button class="btn-save-projet" onclick="saveProjet()">PUBLIER →</button>
             </div>
           </div>
+          <div class="projects-list" id="projetsList"><div class="no-projects-dash"><p>AUCUN PROJET AJOUTÉ · CLIQUEZ SUR "+ AJOUTER"</p></div></div>
+        </div>
+      </div>
 
-          <div class="projects-list" id="projetsList">
-            <div class="no-projects-dash"><p>AUCUN PROJET AJOUTÉ · CLIQUEZ SUR "+ AJOUTER"</p></div>
+      <!-- VUE MESSAGES ── NOUVEAU ── -->
+      <div class="dash-section" id="ds-messages">
+        <div class="dash-page-title">MESSAGES</div>
+        <div class="dash-page-sub">BOÎTE DE RÉCEPTION · FORMULAIRE DE CONTACT DU PORTFOLIO</div>
+        <div class="messages-section">
+          <div class="ms-header">
+            <div class="ms-title">
+              <svg width="16" height="14" viewBox="0 0 16 14" fill="none"><rect x="1" y="1" width="14" height="11" rx="1.5" stroke="rgba(250,0,0,0.6)" stroke-width="1.2"/><path d="M 1 4 L 8 8.5 L 15 4" stroke="rgba(250,0,0,0.6)" stroke-width="1.2"/></svg>
+              BOÎTE DE RÉCEPTION
+              <span class="ms-count-badge" id="msCountBadge">0</span>
+            </div>
+            <button class="btn-clear-msgs" onclick="clearAllMessages()">TOUT SUPPRIMER</button>
+          </div>
+          <div class="msg-list" id="msgList">
+            <div class="no-messages">
+              <svg width="40" height="36" viewBox="0 0 40 36" fill="none"><rect x="2" y="2" width="36" height="28" rx="3" stroke="white" stroke-width="1.5"/><path d="M 2 10 L 20 20 L 38 10" stroke="white" stroke-width="1.5"/></svg>
+              <p>AUCUN MESSAGE REÇU</p>
+              <p style="margin-top:0.3rem;font-size:0.5rem;opacity:0.6;">LES MESSAGES DU FORMULAIRE DE CONTACT APPARAÎTRONT ICI</p>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- ── VUE ANALYTICS ── -->
+      <!-- VUE ANALYTICS -->
       <div class="dash-section" id="ds-analytics">
         <div class="dash-page-title">ANALYTICS</div>
         <div class="dash-page-sub">RÉCAPITULATIF · TOUTES PLATEFORMES</div>
@@ -1033,7 +961,7 @@
 
     </main>
   </div>
-</div><!-- end screen-dashboard -->
+</div>
 
 <script>
   // ═══════════════════════════════════
@@ -1041,8 +969,14 @@
   // ═══════════════════════════════════
   const STORAGE_KEY = 'danycaptione_data';
   function getData() { try { const raw = localStorage.getItem(STORAGE_KEY); return raw ? JSON.parse(raw) : getDefaultData(); } catch(e) { return getDefaultData(); } }
-  function getDefaultData() { return { networks: { ig: 0, tk: 0, yt: 0, fb: 0, tw: 0, ot: 0 }, projets: [] }; }
+  function getDefaultData() { return { networks: { ig: 0, tk: 0, yt: 0, fb: 0, tw: 0, ot: 0 }, projets: [], messages: [] }; }
   function saveData(data) { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); }
+
+  // Migration : ajoute messages si absent
+  (function migrateData() {
+    const data = getData();
+    if (!data.messages) { data.messages = []; saveData(data); }
+  })();
 
   // ═══════════════════════════════════
   // NAVIGATION
@@ -1070,7 +1004,145 @@
     if (name === 'analytics') renderAnalytics();
     if (name === 'stats') loadNetworkInputs();
     if (name === 'projets') renderProjetsList();
+    if (name === 'messages') renderMessages();
     if (name === 'dashboard') renderDashboardSummary();
+  }
+
+  // ═══════════════════════════════════
+  // FORMULAIRE DE CONTACT
+  // ═══════════════════════════════════
+  function submitContactForm() {
+    const name    = document.getElementById('cfName').value.trim();
+    const email   = document.getElementById('cfEmail').value.trim();
+    const type    = document.getElementById('cfType').value;
+    const message = document.getElementById('cfMessage').value.trim();
+    const privacy = document.getElementById('privacyBox').classList.contains('checked');
+
+    if (!name)    { showToast('Merci d\'indiquer ton nom ou ta marque'); document.getElementById('cfName').focus(); return; }
+    if (!email || !email.includes('@')) { showToast('Adresse email invalide'); document.getElementById('cfEmail').focus(); return; }
+    if (!message) { showToast('Décris ton projet pour que je puisse t\'aider !'); document.getElementById('cfMessage').focus(); return; }
+    if (!privacy) { showToast('Accepte la politique de confidentialité pour continuer'); return; }
+
+    const data = getData();
+    const msg = {
+      id: Date.now(),
+      name, email, type, message,
+      date: new Date().toLocaleString('fr-FR', { day: '2-digit', month: '2-digit', year: 'numeric', hour: '2-digit', minute: '2-digit' }),
+      read: false
+    };
+    data.messages.unshift(msg);
+    saveData(data);
+
+    // Afficher le succès
+    document.getElementById('contactFormContainer').style.display = 'none';
+    document.getElementById('formSuccess').style.display = 'block';
+
+    // Mettre à jour le badge
+    updateMessageBadge();
+  }
+
+  function resetContactForm() {
+    document.getElementById('cfName').value = '';
+    document.getElementById('cfEmail').value = '';
+    document.getElementById('cfMessage').value = '';
+    document.getElementById('cfType').selectedIndex = 0;
+    document.getElementById('privacyBox').classList.remove('checked');
+    document.getElementById('contactFormContainer').style.display = 'block';
+    document.getElementById('formSuccess').style.display = 'none';
+  }
+
+  // Email rapide depuis home
+  function handleJoinEmail() {
+    const email = document.getElementById('joinEmail').value.trim();
+    if (!email || !email.includes('@')) { showToast('Entrez une adresse email valide'); return; }
+    // Pré-remplir et naviguer vers le contact
+    pfShowPage('contact');
+    setTimeout(() => { const cfEmail = document.getElementById('cfEmail'); if(cfEmail) { cfEmail.value = email; cfEmail.focus(); } }, 100);
+  }
+
+  // ═══════════════════════════════════
+  // MESSAGES DASHBOARD
+  // ═══════════════════════════════════
+  function renderMessages() {
+    const data = getData();
+    const msgs = data.messages || [];
+    const container = document.getElementById('msgList');
+    const badge = document.getElementById('msCountBadge');
+    const unread = msgs.filter(m => !m.read).length;
+    if (badge) badge.textContent = unread;
+
+    if (msgs.length === 0) {
+      container.innerHTML = `<div class="no-messages">
+        <svg width="40" height="36" viewBox="0 0 40 36" fill="none"><rect x="2" y="2" width="36" height="28" rx="3" stroke="white" stroke-width="1.5"/><path d="M 2 10 L 20 20 L 38 10" stroke="white" stroke-width="1.5"/></svg>
+        <p>AUCUN MESSAGE REÇU</p>
+        <p style="margin-top:0.3rem;font-size:0.5rem;opacity:0.6;">LES MESSAGES DU FORMULAIRE DE CONTACT APPARAÎTRONT ICI</p>
+      </div>`;
+      return;
+    }
+
+    container.innerHTML = msgs.map(m => `
+      <div class="msg-card ${!m.read ? 'unread' : ''}" id="msgcard-${m.id}">
+        ${!m.read ? '<div class="msg-unread-dot"></div>' : ''}
+        <div class="msg-card-header">
+          <div class="msg-identity">
+            <div class="msg-name">${escHtml(m.name)}</div>
+            <div class="msg-email">${escHtml(m.email)}</div>
+          </div>
+          <div class="msg-right">
+            <div class="msg-date">${m.date}</div>
+            <div class="msg-type-tag">${escHtml(m.type)}</div>
+          </div>
+        </div>
+        <div class="msg-body">${escHtml(m.message)}</div>
+        <div class="msg-actions">
+          ${!m.read ? `<button class="msg-btn read" onclick="markRead(${m.id})">MARQUER LU</button>` : `<span style="font-size:0.4rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.2);padding:0.28rem 0.3rem;">✓ LU</span>`}
+          <button class="msg-btn" onclick="replyMessage('${escHtml(m.email)}','${escHtml(m.name)}')">RÉPONDRE</button>
+          <button class="msg-btn del" onclick="deleteMessage(${m.id})">SUPPR.</button>
+        </div>
+      </div>`).join('');
+  }
+
+  function markRead(id) {
+    const data = getData();
+    const msg = data.messages.find(m => m.id === id);
+    if (msg) { msg.read = true; saveData(data); renderMessages(); updateMessageBadge(); renderDashboardSummary(); }
+  }
+
+  function deleteMessage(id) {
+    if (!confirm('Supprimer ce message ?')) return;
+    const data = getData();
+    data.messages = data.messages.filter(m => m.id !== id);
+    saveData(data);
+    renderMessages(); updateMessageBadge(); renderDashboardSummary();
+    showToast('Message supprimé');
+  }
+
+  function clearAllMessages() {
+    if (!confirm('Supprimer TOUS les messages ?')) return;
+    const data = getData();
+    data.messages = []; saveData(data);
+    renderMessages(); updateMessageBadge(); renderDashboardSummary();
+    showToast('Boîte de réception vidée');
+  }
+
+  function replyMessage(email, name) {
+    const subject = encodeURIComponent(`Réponse — Dany Captione`);
+    const body = encodeURIComponent(`Bonjour ${name},\n\nMerci pour ton message.\n\n---\nDany Captione`);
+    window.open(`mailto:${email}?subject=${subject}&body=${body}`, '_blank');
+  }
+
+  function updateMessageBadge() {
+    const data = getData();
+    const unread = (data.messages || []).filter(m => !m.read).length;
+    const badge = document.getElementById('snMsgBadge');
+    if (badge) { badge.textContent = unread; badge.style.display = unread > 0 ? 'inline-block' : 'none'; }
+    const dCount = document.getElementById('dMsgCount');
+    if (dCount) dCount.textContent = unread;
+  }
+
+  function escHtml(str) {
+    if (!str) return '';
+    return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
   }
 
   // ═══════════════════════════════════
@@ -1093,7 +1165,6 @@
     const setEl = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
     setEl('dTotalViews', formatNumber(total));
     setEl('dIGViews', formatNumber(data.networks.ig || 0));
-    setEl('dTKViews', formatNumber(data.networks.tk || 0));
   }
   function getTotalViews() { const data = getData(); return Object.values(data.networks).reduce((a, b) => a + (b || 0), 0); }
   function formatNumber(n) {
@@ -1173,14 +1244,10 @@
     container.innerHTML = data.projets.map(p => `
       <div class="pl-item">
         ${p.media ? (p.mediaType === 'video' ? `<video class="pl-thumb" src="${p.media}" style="width:56px;height:38px;object-fit:cover;"></video>` : `<img class="pl-thumb" src="${p.media}" alt="${p.title}"/>`) : `<div class="pl-thumb-placeholder"><svg width="18" height="12" viewBox="0 0 20 14" fill="none" opacity="0.4"><rect x="1" y="1" width="18" height="12" rx="1" stroke="white" stroke-width="1"/><polygon points="7,4 7,10 14,7" fill="white"/></svg></div>`}
-        <div class="pl-info">
-          <div class="pl-title">${p.title}</div>
-          <div class="pl-meta">${p.date ? p.date + ' · ' : ''}${p.client ? p.client + ' · ' : ''}${p.type}</div>
-        </div>
+        <div class="pl-info"><div class="pl-title">${p.title}</div><div class="pl-meta">${p.date ? p.date + ' · ' : ''}${p.client ? p.client + ' · ' : ''}${p.type}</div></div>
         <div class="pl-type-badge">${p.type}</div>
         <div class="pl-actions"><button class="pl-btn del" onclick="deleteProjet(${p.id})">SUPPR.</button></div>
-      </div>
-    `).join('');
+      </div>`).join('');
   }
 
   // ═══════════════════════════════════
@@ -1246,17 +1313,40 @@
   // ═══════════════════════════════════
   // DASHBOARD
   // ═══════════════════════════════════
-  function renderDashboard() { renderNetworkDisplays(); renderDashboardSummary(); renderPortfolio(); }
+  function renderDashboard() {
+    renderNetworkDisplays(); renderDashboardSummary(); renderPortfolio(); updateMessageBadge();
+  }
   function renderDashboardSummary() {
     const data = getData();
     const dCount = document.getElementById('dProjetsCount'); if (dCount) dCount.textContent = data.projets.length;
+    updateMessageBadge();
+
+    // Derniers projets
     const container = document.getElementById('dashRecentProjets'); if (!container) return;
-    if (data.projets.length === 0) { container.innerHTML = '<div class="no-projects-dash"><p>AUCUN PROJET — AJOUTEZ-EN DEPUIS "PROJETS"</p></div>'; return; }
-    container.innerHTML = data.projets.slice(0, 4).map(p => `
-      <div class="pl-item">
-        ${p.media ? (p.mediaType === 'video' ? `<video class="pl-thumb" src="${p.media}" style="width:56px;height:38px;object-fit:cover;"></video>` : `<img class="pl-thumb" src="${p.media}" alt="${p.title}"/>`) : `<div class="pl-thumb-placeholder"><svg width="18" height="12" viewBox="0 0 20 14" fill="none" opacity="0.4"><rect x="1" y="1" width="18" height="12" rx="1" stroke="white" stroke-width="1"/><polygon points="7,4 7,10 14,7" fill="white"/></svg></div>`}
-        <div class="pl-info"><div class="pl-title">${p.title}</div><div class="pl-meta">${p.date ? p.date + ' · ' : ''}${p.type}</div></div>
-        <div class="pl-type-badge">${p.type}</div>
+    if (data.projets.length === 0) { container.innerHTML = '<div class="no-projects-dash"><p>AUCUN PROJET — AJOUTEZ-EN DEPUIS "PROJETS"</p></div>'; }
+    else {
+      container.innerHTML = data.projets.slice(0, 4).map(p => `
+        <div class="pl-item">
+          ${p.media ? (p.mediaType === 'video' ? `<video class="pl-thumb" src="${p.media}" style="width:56px;height:38px;object-fit:cover;"></video>` : `<img class="pl-thumb" src="${p.media}" alt="${p.title}"/>`) : `<div class="pl-thumb-placeholder"><svg width="18" height="12" viewBox="0 0 20 14" fill="none" opacity="0.4"><rect x="1" y="1" width="18" height="12" rx="1" stroke="white" stroke-width="1"/><polygon points="7,4 7,10 14,7" fill="white"/></svg></div>`}
+          <div class="pl-info"><div class="pl-title">${p.title}</div><div class="pl-meta">${p.date ? p.date + ' · ' : ''}${p.type}</div></div>
+          <div class="pl-type-badge">${p.type}</div>
+        </div>`).join('');
+    }
+
+    // Derniers messages aperçu
+    const msgContainer = document.getElementById('dashRecentMessages'); if (!msgContainer) return;
+    const msgs = (data.messages || []).slice(0, 3);
+    if (msgs.length === 0) { msgContainer.innerHTML = '<div class="no-projects-dash"><p>AUCUN MESSAGE REÇU</p></div>'; return; }
+    msgContainer.innerHTML = msgs.map(m => `
+      <div class="pl-item" style="${!m.read ? 'border-left:2px solid var(--rose);' : ''}">
+        <div style="width:32px;height:32px;background:#0c0c0c;border:1px solid rgba(250,0,0,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <svg width="14" height="12" viewBox="0 0 16 14" fill="none"><rect x="1" y="1" width="14" height="11" rx="1" stroke="rgba(250,0,0,0.6)" stroke-width="1"/><path d="M 1 4 L 8 7.5 L 15 4" stroke="rgba(250,0,0,0.6)" stroke-width="1"/></svg>
+        </div>
+        <div class="pl-info">
+          <div class="pl-title">${escHtml(m.name)} <span style="color:rgba(255,255,255,0.3);font-size:0.55rem;">— ${escHtml(m.email)}</span></div>
+          <div class="pl-meta">${m.date} · ${escHtml(m.type)}</div>
+        </div>
+        ${!m.read ? '<div style="width:6px;height:6px;background:var(--rose);border-radius:50%;flex-shrink:0;"></div>' : ''}
       </div>`).join('');
   }
 
@@ -1298,6 +1388,7 @@
   // INIT
   // ═══════════════════════════════════
   renderPortfolio();
+  updateMessageBadge();
 </script>
 </body>
 </html>

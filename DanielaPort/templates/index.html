@@ -1,0 +1,1406 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DANY_CAPTIONE — Real Maker</title>
+  <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --rose: #fa0000;
+      --noir: #0a0a0a;
+      --gris: #111111;
+      --gris2: #1a1a1a;
+      --texte: #c8c8c8;
+      --blanc: #f0ece8;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--noir);
+      color: var(--texte);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    .font-display { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.04em; }
+    .font-serif   { font-family: 'Cormorant Garamond', serif; }
+
+    /* ─── NAV ─── */
+    .navbar-custom {
+      background: rgba(10,10,10,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      padding: 0 2.5rem;
+      height: 60px;
+    }
+    .logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; letter-spacing: 0.15em; color: var(--blanc); }
+    .nav-link {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(200,200,200,0.7);
+      transition: color 0.3s;
+      padding: 0 1rem;
+    }
+    .nav-link:hover, .nav-link.active { color: var(--blanc); }
+    .nav-link.active { border-bottom: 1px solid var(--rose); padding-bottom: 2px; }
+
+    /* ─── HERO ─── */
+    .hero-section {
+      min-height: 100vh;
+      background: var(--noir);
+      position: relative;
+      display: flex; align-items: flex-end;
+      padding-bottom: 5rem;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: linear-gradient(160deg, #0a0a0a 40%, #1a0f0d 100%);
+    }
+    .hero-img-wrap {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .hero-img-placeholder {
+      width: 100%; height: 100%;
+      background: linear-gradient(180deg, transparent 0%, #0a0a0a 80%),
+                  radial-gradient(ellipse 60% 80% at 60% 30%, #2a1a15 0%, transparent 70%);
+    }
+
+    /* Timeline ticker en haut */
+    .hero-ticker {
+      position: absolute; top: 80px; left: 0; right: 0;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding: 0.45rem 2.5rem;
+      display: flex; align-items: center; gap: 3rem;
+      overflow: hidden;
+    }
+    .ticker-item {
+      font-size: 0.52rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(255,255,255,0.25); white-space: nowrap;
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .ticker-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--rose); flex-shrink: 0; }
+
+    .hero-content { position: relative; z-index: 2; padding: 0 2.5rem; }
+    .hero-eyebrow {
+      font-size: 0.62rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: rgba(255,255,255,0.4); margin-bottom: 0.75rem;
+    }
+    .hero-title-main {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3.5rem, 12vw, 9rem);
+      line-height: 0.9;
+      color: var(--blanc);
+      letter-spacing: 0.01em;
+    }
+    .hero-title-accent {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: clamp(3.5rem, 12vw, 9rem);
+      line-height: 0.9;
+      color: var(--rose);
+      letter-spacing: 0.01em;
+    }
+    .hero-sub {
+      font-size: 0.75rem; letter-spacing: 0.25em;
+      text-transform: uppercase; color: rgba(255,255,255,0.4);
+      margin-top: 0.5rem;
+    }
+    /* Tags de rôles sous le titre */
+    .hero-roles {
+      display: flex; gap: 0.6rem; flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
+    .role-tag {
+      font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+      border: 1px solid rgba(255,255,255,0.12);
+      padding: 0.3rem 0.8rem;
+    }
+    .role-tag.accent { border-color: var(--rose); color: var(--rose); }
+
+    /* ─── SECTION VISION ─── */
+    .section-optique {
+      background: var(--noir);
+      padding: 6rem 2.5rem;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 4rem; align-items: center;
+    }
+    .optique-text .label {
+      font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--rose); display: flex; align-items: center; gap: 0.6rem;
+      margin-bottom: 1.2rem;
+    }
+    .optique-text .label::before { content: ''; width: 2rem; height: 1px; background: var(--rose); }
+    .optique-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      color: var(--blanc); letter-spacing: 0.05em;
+      margin-bottom: 1.5rem;
+    }
+    .optique-body { font-size: 0.85rem; line-height: 1.9; color: var(--texte); margin-bottom: 2rem; }
+    .btn-manifeste {
+      display: inline-block;
+      background: var(--rose);
+      color: #1a0a08;
+      font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase;
+      padding: 0.75rem 1.8rem;
+      font-weight: 500;
+      transition: background 0.3s, transform 0.3s;
+      cursor: pointer;
+    }
+    .btn-manifeste:hover { background: #e20505; transform: translateY(-1px); }
+
+    /* Timeline vidéo visual */
+    .optique-img-wrap { position: relative; }
+    .lens-card {
+      background: #0f0f0f;
+      padding: 1.5rem;
+      overflow: hidden;
+      position: relative;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    .timeline-visual { display: flex; flex-direction: column; gap: 0.8rem; }
+    .tl-row { display: flex; align-items: center; gap: 0.6rem; }
+    .tl-label { font-size: 0.45rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.2); width: 4.5rem; flex-shrink: 0; }
+    .tl-track { flex: 1; height: 6px; background: rgba(255,255,255,0.05); position: relative; overflow: hidden; }
+    .tl-fill { height: 100%; background: rgba(250,0,0,0.5); position: absolute; left: 0; top: 0; }
+    .tl-clip { position: absolute; top: 0; height: 100%; background: rgba(250,0,0,0.8); }
+    .tl-clip2 { position: absolute; top: 0; height: 100%; background: rgba(200,150,100,0.5); }
+    .tl-timecode { font-size: 0.4rem; letter-spacing: 0.1em; color: rgba(255,255,255,0.2); width: 3rem; text-align: right; flex-shrink: 0; font-family: 'Courier New', monospace; }
+    .tl-playhead {
+      position: absolute; top: -4px; bottom: -4px; width: 1px; background: var(--rose);
+      left: 38%;
+    }
+    .tl-playhead::before { content: '▼'; position: absolute; top: -8px; left: -4px; font-size: 8px; color: var(--rose); }
+    .tl-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.2rem; padding-bottom: 0.8rem; border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .tl-header-title { font-size: 0.5rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.3); }
+    .tl-timecode-main { font-family: 'Courier New', monospace; font-size: 0.65rem; color: var(--rose); letter-spacing: 0.1em; }
+    .tl-footer { margin-top: 1.2rem; padding-top: 0.8rem; border-top: 1px solid rgba(255,255,255,0.06); display: flex; justify-content: space-between; align-items: center; }
+    .tl-stat { text-align: center; }
+    .tl-stat-val { font-size: 0.7rem; color: rgba(255,255,255,0.5); font-family: 'Courier New', monospace; }
+    .tl-stat-label { font-size: 0.4rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.2); }
+
+    /* ─── SERVICES / EXPERTISES ─── */
+    .section-galerie { background: var(--noir); padding: 6rem 2.5rem; }
+    .section-header {
+      display: flex; align-items: baseline; justify-content: space-between;
+      margin-bottom: 2.5rem;
+    }
+    .section-label {
+      font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: rgba(255,255,255,0.35); margin-bottom: 0.5rem;
+    }
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      color: var(--blanc); letter-spacing: 0.04em;
+    }
+    .section-collection {
+      font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+    }
+
+    /* Grid de services */
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      grid-template-rows: auto auto;
+      gap: 0.5rem;
+    }
+    .service-card {
+      position: relative; overflow: hidden;
+      background: var(--gris2); cursor: pointer;
+      padding: 2rem;
+      border: 1px solid rgba(255,255,255,0.04);
+      transition: border-color 0.3s;
+    }
+    .service-card:hover { border-color: rgba(250,0,0,0.2); }
+    .service-card-main { grid-row: span 2; padding: 2.5rem; }
+
+    .service-num { font-family: 'Cormorant Garamond', serif; font-size: 0.65rem; color: rgba(255,255,255,0.15); letter-spacing: 0.2em; margin-bottom: 1.5rem; }
+    .service-icon { margin-bottom: 1.5rem; opacity: 0.6; }
+    .service-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 0.08em; color: var(--blanc); margin-bottom: 1rem; }
+    .service-desc { font-size: 0.72rem; line-height: 1.75; color: rgba(255,255,255,0.45); margin-bottom: 1.5rem; }
+    .service-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .service-tag { font-size: 0.47rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.3); border: 1px solid rgba(255,255,255,0.08); padding: 0.2rem 0.5rem; }
+    .service-tag.hot { border-color: rgba(250,0,0,0.3); color: rgba(250,0,0,0.6); }
+
+    /* Stats bar */
+    .service-stat-row { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.5rem; }
+    .service-stat-label { font-size: 0.45rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.2); width: 5.5rem; }
+    .service-stat-bar { flex: 1; height: 2px; background: rgba(255,255,255,0.06); }
+    .service-stat-fill { height: 100%; background: var(--rose); }
+    .service-stat-val { font-size: 0.5rem; color: rgba(255,255,255,0.3); width: 2rem; text-align: right; font-family: 'Courier New', monospace; }
+
+    /* ─── BAND ─── */
+    .archi-band {
+      background: var(--gris);
+      padding: 3rem 2.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      overflow: hidden; position: relative;
+    }
+    .archi-text-big {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(4rem, 12vw, 9rem);
+      color: rgba(255,255,255,0.05);
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+    }
+    .archi-right {
+      text-align: right;
+      flex-shrink: 0; margin-left: 2rem;
+    }
+    .archi-right .label { font-size: 0.55rem; letter-spacing: 0.3em; color: rgba(255,255,255,0.3); margin-bottom: 0.5rem; }
+    .archi-right .desc { font-size: 0.65rem; letter-spacing: 0.1em; color: rgba(255,255,255,0.4); }
+
+    /* ─── REJOINDRE ─── */
+    .section-rejoindre {
+      background: var(--noir);
+      padding: 5rem 2.5rem;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 4rem; align-items: center;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .rejoindre-left h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      color: var(--blanc); letter-spacing: 0.04em;
+      margin-bottom: 1rem;
+    }
+    .rejoindre-left p { font-size: 0.8rem; line-height: 1.8; color: var(--texte); }
+    .join-form { display: flex; gap: 0; }
+    .join-input {
+      flex: 1;
+      background: var(--gris2);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: var(--blanc);
+      padding: 0.9rem 1.2rem;
+      font-size: 0.75rem; letter-spacing: 0.1em;
+      outline: none;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .join-input::placeholder { color: rgba(255,255,255,0.25); }
+    .join-btn {
+      background: var(--rose);
+      color: #1a0a08;
+      border: none;
+      padding: 0.9rem 1.5rem;
+      font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
+      font-weight: 500; cursor: pointer;
+      transition: background 0.3s;
+      white-space: nowrap;
+    }
+    .join-btn:hover { background: #ec0303; }
+
+    /* ═══════════════════════════════════
+       PAGE À PROPOS / TRANSMISSION
+    ═══════════════════════════════════ */
+    .page { display: none; }
+    .page.active { display: block; }
+
+    .apropos-hero {
+      padding: 120px 2.5rem 5rem;
+      display: grid; grid-template-columns: 1fr auto;
+      gap: 4rem; align-items: start;
+    }
+    .apropos-eyebrow {
+      font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: rgba(255,255,255,0.35); margin-bottom: 1rem;
+    }
+    .apropos-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 10vw, 7rem);
+      color: var(--blanc); line-height: 0.85; margin-bottom: 0.2rem;
+    }
+    .apropos-title-italic {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic; font-size: clamp(2.5rem, 8vw, 6rem);
+      color: var(--rose); line-height: 0.9; margin-bottom: 2.5rem;
+    }
+    .apropos-intro p {
+      font-size: 0.88rem; line-height: 1.9; color: var(--texte); margin-bottom: 1.2rem;
+    }
+    .apropos-intro em { font-style: italic; color: var(--blanc); }
+    .btn-contact {
+      display: inline-block; background: var(--rose); color: #1a0a08;
+      font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase;
+      padding: 0.85rem 2rem; font-weight: 500; cursor: pointer;
+      margin-top: 1.5rem; transition: background 0.3s;
+    }
+    .btn-contact:hover { background: #d4806a; }
+
+    .portrait-wrap {
+      width: 260px; flex-shrink: 0;
+      position: relative;
+    }
+    .portrait-img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      background: linear-gradient(180deg, #2a2520 0%, #1a1510 100%);
+      position: relative;
+    }
+    .portrait-label {
+      position: absolute; right: -1px; top: 40%;
+      writing-mode: vertical-rl;
+      font-size: 0.45rem; letter-spacing: 0.3em;
+      color: rgba(255,255,255,0.2); text-transform: uppercase;
+    }
+
+    /* Rôles / Stack */
+    .arsenal-section {
+      background: var(--gris);
+      padding: 5rem 2.5rem;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .arsenal-label {
+      font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: rgba(255,255,255,0.3); margin-bottom: 0.6rem;
+    }
+    .arsenal-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 7vw, 5rem);
+      color: var(--blanc); letter-spacing: 0.04em;
+      margin-bottom: 0.5rem;
+    }
+    .arsenal-desc {
+      font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
+      color: rgba(255,255,255,0.3); max-width: 50%; margin-bottom: 3rem; line-height: 1.7;
+    }
+    .arsenal-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 0.5rem;
+    }
+    .arsenal-card {
+      background: var(--gris2);
+      border: 1px solid rgba(255,255,255,0.05);
+      padding: 2rem;
+    }
+    .arsenal-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.65rem; color: rgba(255,255,255,0.2);
+      letter-spacing: 0.2em; margin-bottom: 1.5rem;
+      text-align: right;
+    }
+    .arsenal-icon { width: 28px; height: 28px; margin-bottom: 1.5rem; opacity: 0.7; }
+    .arsenal-card h3 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.1rem; letter-spacing: 0.1em;
+      color: var(--blanc); margin-bottom: 1rem;
+    }
+    .arsenal-card ul { list-style: none; }
+    .arsenal-card ul li {
+      font-size: 0.7rem; color: rgba(255,255,255,0.5);
+      padding: 0.3rem 0;
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .arsenal-card ul li::before { content: '•'; color: var(--rose); font-size: 0.8rem; }
+
+    /* Quote */
+    .quote-section {
+      background: var(--gris2);
+      padding: 6rem 2.5rem;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+    .quote-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic; font-size: clamp(1.5rem, 4vw, 2.5rem);
+      color: var(--rose); line-height: 1.4;
+      max-width: 700px; margin: 0 auto 2rem;
+    }
+    .quote-attr {
+      font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+    }
+
+    /* ═══════════════════════════════════
+       STUDIO / RÉALISATIONS
+    ═══════════════════════════════════ */
+    .studio-header {
+      padding: 120px 2.5rem 4rem;
+    }
+    .studio-eyebrow {
+      display: flex; align-items: center; gap: 0.8rem;
+      font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: rgba(255,255,255,0.3); margin-bottom: 0.8rem;
+    }
+    .studio-eyebrow::before { content: '—'; color: var(--rose); }
+    .studio-title-wrap {
+      display: flex; align-items: baseline;
+      justify-content: space-between;
+    }
+    .studio-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 10vw, 7rem);
+      color: var(--blanc); letter-spacing: 0.03em;
+    }
+    .studio-title span { color: var(--rose); font-family: 'Cormorant Garamond', serif; font-style: italic; }
+    .studio-loc {
+      font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(255,255,255,0.25); text-align: right;
+    }
+    .studio-loc .label { color: rgba(255,255,255,0.15); font-size: 0.5rem; margin-bottom: 0.3rem; }
+
+    .studio-masonry {
+      padding: 0 2.5rem 6rem;
+      display: grid;
+      grid-template-columns: 1fr 0.7fr;
+      grid-template-rows: auto auto auto;
+      gap: 0.5rem;
+    }
+    .studio-card {
+      position: relative; overflow: hidden; background: var(--gris2); cursor: pointer;
+    }
+    .studio-card:hover .studio-card-overlay { opacity: 1; }
+    .studio-card-overlay {
+      position: absolute; inset: 0;
+      background: rgba(232,160,144,0.06);
+      opacity: 0; transition: opacity 0.4s;
+    }
+    .sc-main { grid-row: 1; grid-column: 1; }
+    .sc-side1 { grid-row: 1; grid-column: 2; }
+    .sc-side2 { grid-row: 2; grid-column: 1; }
+    .sc-center { grid-row: 2; grid-column: 2; }
+
+    .studio-img-ph {
+      width: 100%; display: block;
+    }
+    .sc-main .studio-img-ph { height: 380px; background: linear-gradient(180deg, #2a2018 0%, #1a1510 100%); }
+    .sc-side1 .studio-img-ph { height: 380px; background: linear-gradient(135deg, #2a0f15 0%, #1a0a10 100%); }
+    .sc-side2 .studio-img-ph { height: 280px; background: linear-gradient(135deg, #1a1818 0%, #0d0d0d 100%); }
+    .sc-center .studio-img-ph { height: 280px; background: linear-gradient(180deg, #1a0a10 0%, #300818 100%); }
+
+    .studio-card-label {
+      position: absolute; bottom: 1.5rem; left: 1.5rem;
+    }
+    .studio-card-label h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem; font-weight: 400;
+      color: var(--blanc); margin-bottom: 0.5rem;
+    }
+    .studio-card-meta {
+      font-size: 0.5rem; letter-spacing: 0.15em;
+      color: rgba(255,255,255,0.4); text-transform: uppercase;
+    }
+    .studio-card-tag {
+      position: absolute; top: 1rem; left: 1rem;
+      font-size: 0.5rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(255,255,255,0.4);
+      background: rgba(10,10,10,0.7); padding: 0.3rem 0.6rem;
+    }
+    .studio-card-ref {
+      position: absolute; bottom: 1rem; right: 1rem;
+      font-size: 0.48rem; letter-spacing: 0.15em;
+      color: rgba(255,255,255,0.3); text-transform: uppercase;
+    }
+    .studio-arrow {
+      position: absolute; bottom: 1.5rem; right: 1.5rem;
+      width: 40px; height: 40px;
+      background: var(--rose);
+      display: flex; align-items: center; justify-content: center;
+      color: #1a0a08; font-size: 1rem;
+    }
+
+    /* Play button overlay */
+    .play-btn {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 48px; height: 48px;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(0,0,0,0.5);
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .play-btn::after { content: '▶'; color: var(--blanc); font-size: 0.8rem; padding-left: 3px; }
+    .studio-card:hover .play-btn { opacity: 1; }
+
+    .sc-data-card {
+      background: var(--gris2); padding: 1.5rem;
+    }
+    .sc-data-card .color-swatches {
+      display: flex; gap: 0.3rem; margin-bottom: 1rem;
+    }
+    .swatch { width: 20px; height: 20px; }
+    .sc-data-card .data-row {
+      display: flex; gap: 2rem; margin-bottom: 0.6rem;
+    }
+    .sc-data-card .data-label {
+      font-size: 0.5rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(255,255,255,0.3); margin-bottom: 0.2rem;
+    }
+    .sc-data-card .data-val {
+      font-size: 0.65rem; letter-spacing: 0.1em; color: rgba(255,255,255,0.6);
+    }
+    .sc-data-card blockquote {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic; font-size: 0.7rem;
+      color: rgba(255,255,255,0.35); line-height: 1.6;
+      border-left: 2px solid var(--rose); padding-left: 0.8rem; margin-top: 1rem;
+    }
+
+    /* Metrics card */
+    .sc-metrics-card {
+      background: var(--gris2); padding: 2rem;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .metric-item { margin-bottom: 1.5rem; }
+    .metric-val { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; color: var(--blanc); letter-spacing: 0.05em; }
+    .metric-val span { color: var(--rose); }
+    .metric-label { font-size: 0.45rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.25); margin-top: 0.1rem; }
+
+    .studio-pagination {
+      padding: 3rem 2.5rem;
+      display: flex; align-items: center; justify-content: center; gap: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+    .pag-btn {
+      font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: rgba(255,255,255,0.4); cursor: pointer; transition: color 0.3s;
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .pag-btn:hover { color: var(--blanc); }
+    .pag-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.2); }
+    .pag-dot.active { background: var(--rose); }
+
+    /* ═══════════════════════════════════
+       CONTACT PAGE
+    ═══════════════════════════════════ */
+    .contact-hero {
+      padding: 120px 2.5rem 4rem;
+      display: flex; align-items: flex-start; justify-content: space-between;
+    }
+    .contact-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3rem, 10vw, 7rem);
+      color: var(--blanc); line-height: 0.85; letter-spacing: 0.03em;
+    }
+    .contact-status {
+      text-align: right; padding-top: 0.5rem;
+    }
+    .contact-status .status-label { font-size: 0.5rem; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(255,255,255,0.2); }
+    .contact-status .status-val { font-size: 0.65rem; letter-spacing: 0.1em; color: rgba(255,255,255,0.5); }
+    .status-dot { display: inline-block; width: 6px; height: 6px; background: #4ade80; border-radius: 50%; margin-right: 0.4rem; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+
+    .contact-main {
+      padding: 0 2.5rem 6rem;
+      display: grid; grid-template-columns: 0.9fr 1.1fr;
+      gap: 2rem; align-items: start;
+    }
+    .contact-img-wrap { position: relative; }
+    .contact-portrait {
+      width: 100%; height: 420px;
+      background: linear-gradient(180deg, #2a2020 0%, #111 100%);
+    }
+    .contact-meta-badge {
+      position: absolute; bottom: 1.5rem; left: 1.5rem;
+      background: rgba(10,10,10,0.9);
+      padding: 0.8rem 1rem;
+      border-left: 2px solid var(--rose);
+    }
+    .contact-meta-badge .m-label { font-size: 0.48rem; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 0.3rem; }
+    .contact-meta-badge .m-val { font-size: 0.62rem; color: rgba(255,255,255,0.5); line-height: 1.5; }
+
+    .contact-form-wrap {
+      background: var(--gris2);
+      border: 1px solid rgba(255,255,255,0.06);
+      padding: 2.5rem;
+    }
+    .form-eyebrow { font-size: 0.55rem; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 0.5rem; }
+    .form-title { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; color: var(--blanc); margin-bottom: 2rem; }
+
+    .form-field { margin-bottom: 1.5rem; }
+    .form-label { font-size: 0.5rem; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(255,255,255,0.3); display: block; margin-bottom: 0.5rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    .form-input, .form-select, .form-textarea {
+      width: 100%;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: var(--blanc);
+      padding: 0.85rem 1rem;
+      font-size: 0.75rem; letter-spacing: 0.05em;
+      font-family: 'DM Sans', sans-serif;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+    .form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--rose); }
+    .form-input::placeholder, .form-textarea::placeholder { color: rgba(255,255,255,0.2); font-size: 0.7rem; }
+    .form-select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' fill='none'%3E%3Cpath d='M1 1l4 4 4-4' stroke='rgba(255,255,255,0.3)' stroke-width='1.5'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 1rem center; }
+    .form-select option { background: #1a1a1a; }
+    .form-textarea { height: 130px; resize: none; }
+
+    .form-footer {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-top: 1.5rem;
+    }
+    .privacy-check { display: flex; align-items: center; gap: 0.6rem; }
+    .privacy-box {
+      width: 14px; height: 14px;
+      border: 1px solid rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.05);
+      cursor: pointer; position: relative;
+    }
+    .privacy-box.checked::after { content: ''; position: absolute; inset: 2px; background: var(--rose); }
+    .privacy-label { font-size: 0.5rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.3); cursor: pointer; }
+    .btn-submit {
+      background: var(--rose);
+      color: #1a0a08;
+      border: none;
+      padding: 1rem 2rem;
+      font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase;
+      font-weight: 500; cursor: pointer; transition: background 0.3s;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .btn-submit:hover { background: #d4806a; }
+
+    .contact-info {
+      padding: 0 2.5rem;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 3rem; margin-bottom: 4rem;
+    }
+    .info-group h4 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 0.9rem; letter-spacing: 0.2em;
+      color: rgba(255,255,255,0.5); margin-bottom: 1.2rem;
+      display: flex; align-items: center; gap: 0.5rem;
+    }
+    .info-item { margin-bottom: 1rem; }
+    .info-item .i-label { font-size: 0.5rem; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(255,255,255,0.25); margin-bottom: 0.2rem; }
+    .info-item .i-val { font-size: 0.8rem; color: rgba(255,255,255,0.7); }
+
+    .contact-footer-strips {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 2.5rem 2.5rem 4rem;
+      gap: 2rem;
+    }
+    /* Style pour la case à cocher */
+.privacy-check {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.privacy-check input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.privacy-check label {
+    cursor: pointer;
+    margin: 0;
+}
+    .strip-item { display: flex; align-items: flex-start; gap: 1rem; }
+    .strip-icon { width: 20px; height: 20px; opacity: 0.3; flex-shrink: 0; margin-top: 2px; }
+    .strip-text { font-size: 0.58rem; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.25); line-height: 1.7; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--noir);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 1.5rem 2.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    footer .copy { font-size: 0.55rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.2); }
+    footer .meta-row { display: flex; gap: 2rem; }
+    footer .meta-item { font-size: 0.55rem; letter-spacing: 0.12em; color: rgba(255,255,255,0.2); }
+    footer .socials { display: flex; gap: 1.5rem; }
+    footer .social { font-size: 0.55rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.25); text-decoration: none; transition: color 0.3s; }
+    footer .social:hover { color: var(--rose); }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="navbar-custom flex items-center justify-between">
+  <div class="logo">DANY_CAPTION</div>
+  <div class="flex items-center">
+    <a class="nav-link" onclick="showPage('galerie')" href="#">PORTFOLIO</a>
+    <a class="nav-link" onclick="showPage('studio')" href="#">RÉALISATIONS</a>
+    <a class="nav-link active" onclick="showPage('apropos')" href="#">PROFIL</a>
+    <div style="width:1px;height:16px;background:rgba(255,255,255,0.12);margin:0 1.2rem;"></div>
+    <svg width="18" height="12" viewBox="0 0 18 12" fill="none" style="cursor:pointer;opacity:0.5">
+      <line x1="0" y1="1" x2="18" y2="1" stroke="white" stroke-width="1"/>
+      <line x1="0" y1="6" x2="12" y2="6" stroke="white" stroke-width="1"/>
+      <line x1="0" y1="11" x2="16" y2="11" stroke="white" stroke-width="1"/>
+    </svg>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════
+     PAGE ACCUEIL
+═══════════════════════════════════ -->
+<div id="page-galerie" class="page active">
+
+  <!-- HERO -->
+  <section class="hero-section">
+    <div class="hero-bg"></div>
+    <div class="hero-img-wrap"><div class="hero-img-placeholder"></div></div>
+
+    <!-- Ticker style timeline -->
+    <div class="hero-ticker">
+      <div class="ticker-item"><div class="ticker-dot"></div>MONTAGE VIDÉO</div>
+      <div class="ticker-item"><div class="ticker-dot"></div>CRÉATION DE CONTENU</div>
+      <div class="ticker-item"><div class="ticker-dot"></div>COMMUNITY MANAGEMENT</div>
+      <div class="ticker-item"><div class="ticker-dot"></div>STRATÉGIE DIGITALE</div>
+      <div class="ticker-item"><div class="ticker-dot"></div>REAL MAKER</div>
+      <div class="ticker-item"><div class="ticker-dot"></div>MOTION DESIGN</div>
+    </div>
+
+    <div class="hero-content">
+      <div class="hero-eyebrow">UNIVERS DIGITAL — 2026</div>
+      <div class="hero-title-main">DANY <span class="hero-title-accent">CAPTION</span></div>
+      <div class="hero-sub">R E A L &nbsp; M A K E R</div>
+      <div class="hero-roles">
+        <div class="role-tag accent">MONTEUSE VIDÉO</div>
+        <div class="role-tag">CRÉATRICE DE CONTENU</div>
+        <div class="role-tag">COMMUNITY MANAGER</div>
+        <div class="role-tag">REAL MAKER</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISION -->
+  <section class="section-optique">
+    <div class="optique-text">
+      <div class="label">LA VISION</div>
+      <h2 class="optique-title">CRÉER, C'EST EXISTER</h2>
+      <p class="optique-body">
+        Mon univers se construit au croisement de la narration visuelle et de l'identité de marque. Je ne produis pas simplement du contenu — je construis des <em style="color:var(--blanc);font-style:italic;">univers cohérents</em> qui parlent, qui fédèrent, qui convertissent.
+      </p>
+      <p class="optique-body">
+        Du premier rushes au rendu final, chaque plan est pensé pour l'émotion. Chaque post est conçu pour la communauté. Le montage, le rythme, la cadence d'une page : ce sont des langages que je maîtrise.
+      </p>
+      <button class="btn-manifeste" onclick="showPage('apropos')">DÉCOUVRIR MON PROFIL</button>
+    </div>
+    <div class="optique-img-wrap">
+      <div class="lens-card">
+        <!-- Timeline vidéo simulée -->
+        <div class="tl-header">
+          <div class="tl-header-title">TIMELINE — SEQUENCE 01</div>
+          <div class="tl-timecode-main">00:02:34:12</div>
+        </div>
+        <div class="timeline-visual">
+          <div class="tl-row">
+            <div class="tl-label">VIDEO A</div>
+            <div class="tl-track">
+              <div class="tl-clip" style="left:0;width:25%;"></div>
+              <div class="tl-clip" style="left:30%;width:40%;"></div>
+              <div class="tl-clip" style="left:75%;width:20%;"></div>
+              <div class="tl-playhead"></div>
+            </div>
+            <div class="tl-timecode">00:04:12</div>
+          </div>
+         
+          <div class="tl-stat">
+            <div class="tl-stat-val">4K</div>
+            <div class="tl-stat-label">RÉSOLUTION</div>
+          </div>
+          <div class="tl-stat">
+            <div class="tl-stat-val">24fps</div>
+            <div class="tl-stat-label">CADENCE</div>
+          </div>
+          <div class="tl-stat">
+            <div class="tl-stat-val">H.265</div>
+            <div class="tl-stat-label">CODEC</div>
+          </div>
+          <div class="tl-stat">
+            <div class="tl-stat-val">38</div>
+            <div class="tl-stat-label">COUPES</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="section-galerie">
+    <div class="section-header">
+      <div>
+        <div class="section-label">CE QUE JE FAIS</div>
+        <h2 class="section-title">EXPERTISES</h2>
+      </div>
+      <div class="section-collection">OFFRE 2024 — 2025</div>
+    </div>
+
+    <div class="services-grid">
+      <!-- Principal : Montage vidéo -->
+      <div class="service-card service-card-main">
+        <div class="service-num">01</div>
+        <div class="service-icon">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+            <rect x="2" y="6" width="28" height="20" rx="2" stroke="rgba(250,0,0,0.7)" stroke-width="1.5"/>
+            <polygon points="13,11 13,21 22,16" fill="rgba(250,0,0,0.6)"/>
+            <line x1="2" y1="12" x2="6" y2="12" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+            <line x1="26" y1="12" x2="30" y2="12" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+          </svg>
+        </div>
+        <div class="service-title">MONTAGE VIDÉO</div>
+        <p class="service-desc">De la captation brute au rendu final : je monte des vidéos qui racontent une histoire. Reels, courts-métrages, vidéos institutionnelles, aftermovies. Chaque coupe est intentionnelle, chaque transition au service du rythme narratif.</p>
+
+        <div style="margin-bottom:1.5rem;">
+          <div class="service-stat-row">
+            <span class="service-stat-label">CADENCE</span>
+            <div class="service-stat-bar"><div class="service-stat-fill" style="width:90%"></div></div>
+            <span class="service-stat-val">★★★★</span>
+          </div>
+          <div class="service-stat-row">
+            <span class="service-stat-label">COLOR GRADING</span>
+            <div class="service-stat-bar"><div class="service-stat-fill" style="width:80%"></div></div>
+            <span class="service-stat-val">★★★★</span>
+          </div>
+          <div class="service-stat-row">
+            <span class="service-stat-label">MOTION DESIGN</span>
+            <div class="service-stat-bar"><div class="service-stat-fill" style="width:70%"></div></div>
+            <span class="service-stat-val">★★★</span>
+          </div>
+        </div>
+
+        <div class="service-tags">
+          <span class="service-tag hot">PREMIERE PRO</span>
+          <span class="service-tag hot">CAPCUT</span>
+          <span class="service-tag">DAVINCI RESOLVE</span>
+          <span class="service-tag">4K / UHD</span>
+          <span class="service-tag">SOUS-TITRAGE</span>
+        </div>
+      </div>
+
+      <!-- Community Management -->
+      <div class="service-card">
+        <div class="service-num">02</div>
+        <div class="service-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <circle cx="10" cy="10" r="5" stroke="rgba(250,0,0,0.6)" stroke-width="1.5"/>
+            <circle cx="20" cy="8" r="4" stroke="rgba(255,255,255,0.2)" stroke-width="1.2"/>
+            <path d="M 2 24 Q 10 18 18 24" stroke="rgba(250,0,0,0.5)" stroke-width="1.2" fill="none"/>
+            <path d="M 15 22 Q 20 18 26 22" stroke="rgba(255,255,255,0.15)" stroke-width="1" fill="none"/>
+          </svg>
+        </div>
+        <div class="service-title">COMMUNITY MANAGEMENT</div>
+        <p class="service-desc">Animer, fédérer, engager. Je gère des communautés actives sur Instagram, TikTok, Facebook. Stratégie éditoriale, planning, modération et reporting mensuel.</p>
+        <div class="service-tags">
+          <span class="service-tag hot">INSTAGRAM</span>
+          <span class="service-tag hot">TIKTOK</span>
+          <span class="service-tag">FACEBOOK</span>
+          <span class="service-tag">ANALYTICS</span>
+        </div>
+      </div>
+
+      <!-- Création de contenu -->
+      <div class="service-card">
+        <div class="service-num">03</div>
+        <div class="service-icon">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+            <rect x="4" y="4" width="20" height="20" rx="2" stroke="rgba(250,0,0,0.6)" stroke-width="1.5"/>
+            <path d="M 8 14 Q 12 8 16 14 Q 20 20 24 14" stroke="rgba(255,255,255,0.2)" stroke-width="1" fill="none"/>
+            <circle cx="9" cy="9" r="2" fill="rgba(250,0,0,0.4)"/>
+          </svg>
+        </div>
+        <div class="service-title">CRÉATION DE CONTENU</div>
+        <p class="service-desc">Concept, shooting, textes, visuels : je produis du contenu natif pour chaque plateforme. Brand voice cohérent, esthétique reconnaissable, formats adaptés aux algorithmes.</p>
+        <div class="service-tags">
+          <span class="service-tag hot">REELS</span>
+          <span class="service-tag">COPYWRITING</span>
+          <span class="service-tag">CANVA PRO</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BAND -->
+  <div class="archi-band">
+    <div class="archi-text-big">DIGITAL CONTENT</div>
+    <div class="archi-right">
+      <div class="label">IDENTITÉ DE MARQUE</div>
+      <div class="desc">CONSTRUIRE L'IMAGE, FRAME PAR FRAME</div>
+    </div>
+  </div>
+
+  <!-- REJOINDRE -->
+  <section class="section-rejoindre">
+    <div class="rejoindre-left">
+      <h2>TRAVAILLER ENSEMBLE</h2>
+      <p>Tu as un projet vidéo, une page à développer, une marque à incarner ? Parlons-en. Je suis disponible pour des missions freelance, des collaborations et des partenariats créatifs.</p>
+    </div>
+    <div>
+      <div class="join-form">
+        <input class="join-input" type="email" placeholder="VOTRE EMAIL" />
+        <button class="join-btn" onclick="showPage('contact')">CONTACTER</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="copy">© DANY CAPTION. TOUS DROITS RÉSERVÉS</div>
+    <div class="meta-row">
+      <span class="meta-item">REAL MAKER</span>
+      <span class="meta-item">CONTENU ORIGINAL</span>
+      <span class="meta-item">FREELANCE</span>
+    </div>
+    <div class="socials">
+      <a class="social" href="#">@INSTAGRAM</a>
+      <a class="social" href="#">TIKTOK</a>
+    </div>
+  </footer>
+</div>
+
+<!-- ═══════════════════════════════════
+     PAGE PROFIL
+═══════════════════════════════════ -->
+<div id="page-apropos" class="page">
+  <div class="apropos-hero">
+    <div class="apropos-intro">
+      <div class="apropos-eyebrow">PROFIL // 001</div>
+      <div class="apropos-title">DANY</div>
+      <div class="apropos-title-italic">// Real Maker</div>
+      <p>Je suis créatrice de contenu, monteuse vidéo et community manager. Depuis plusieurs années, je construis des <em>univers visuels cohérents</em> pour des marques, des artistes et des créateurs qui veulent une présence digitale qui leur ressemble vraiment.</p>
+      <p>Mon approche est simple : comprendre avant de créer. Chaque marque a une voix, un rythme, une couleur. Mon rôle est de les traduire en contenu qui parle à sa communauté — avec sincérité, avec style, avec impact.</p>
+      <p>Que ce soit un Reel de 30 secondes ou une stratégie éditoriale sur 3 mois, j'apporte la même exigence : <em>du fond, de la forme, et du résultat.</em></p>
+      <button class="btn-contact" onclick="showPage('contact')">PRENDRE CONTACT</button>
+    </div>
+    <div class="portrait-wrap">
+      <div class="portrait-img" style="display:flex;align-items:center;justify-content:center;">
+        <svg width="80" height="110" viewBox="0 0 80 110" fill="none" opacity="0.15">
+          <ellipse cx="40" cy="30" rx="20" ry="22" stroke="white" stroke-width="1"/>
+          <path d="M 5 105 Q 40 75 75 105" stroke="white" stroke-width="1" fill="none"/>
+        </svg>
+      </div>
+      <div class="portrait-label">CAPTIONE_SYSTEM</div>
+    </div>
+  </div>
+
+  <!-- STACK / OUTILS -->
+  <section class="arsenal-section">
+    <div class="arsenal-label">BOÎTE À OUTILS</div>
+    <h2 class="arsenal-title">LE STACK</h2>
+    <p class="arsenal-desc">CHAQUE OUTIL EST MAÎTRISÉ POUR SERVIR UNE SEULE CHOSE : PRODUIRE DU CONTENU QUI PERFORME ET QUI DURE.</p>
+
+    <div class="arsenal-grid">
+      <!-- Montage -->
+      <div class="arsenal-card">
+        <div class="arsenal-num">01</div>
+        <svg class="arsenal-icon" viewBox="0 0 28 28" fill="none">
+          <rect x="2" y="5" width="24" height="18" rx="2" stroke="rgba(255, 47, 0, 0.7)" stroke-width="1.5"/>
+          <polygon points="11,10 11,18 19,14" fill="rgba(255,47,0,0.5)"/>
+          <line x1="2" y1="10" x2="5" y2="10" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+          <line x1="23" y1="10" x2="26" y2="10" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+        </svg>
+        <h3>MONTAGE & POST-PROD</h3>
+        <ul>
+          <li>PREMIERE PRO / RUSH</li>
+          <li>DAVINCI RESOLVE</li>
+          <li>CAPCUT (MOBILE & DESKTOP)</li>
+          
+        </ul>
+      </div>
+      <!-- Social / CM -->
+      <div class="arsenal-card">
+        <div class="arsenal-num">02</div>
+        <svg class="arsenal-icon" viewBox="0 0 28 28" fill="none">
+          <circle cx="9" cy="9" r="4" stroke="rgba(255, 47, 0, 0.7)" stroke-width="1.5"/>
+          <circle cx="21" cy="7" r="3" stroke="rgba(232,160,144,0.4)" stroke-width="1"/>
+          <circle cx="20" cy="20" r="4" stroke="rgba(232,160,144,0.4)" stroke-width="1.2"/>
+          <line x1="13" y1="9" x2="18" y2="8" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+          <line x1="13" y1="11" x2="16" y2="17" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+        </svg>
+        <h3>PLATEFORMES & CM</h3>
+        <ul>
+          <li>INSTAGRAM / REELS</li>
+          <li>TIKTOK / SHORTS</li>
+          <li>META BUSINESS SUITE</li>
+          
+        </ul>
+      </div>
+      <!-- Création visuelle -->
+      <div class="arsenal-card">
+        <div class="arsenal-num">03</div>
+        <svg class="arsenal-icon" viewBox="0 0 28 28" fill="none">
+          <rect x="4" y="4" width="20" height="20" rx="2" stroke="rgba(253, 46, 0, 0.7)" stroke-width="1.5"/>
+          <circle cx="10" cy="10" r="3" stroke="rgba(232,160,144,0.5)" stroke-width="1"/>
+          <path d="M 4 20 L 10 14 L 15 18 L 19 12 L 24 20" stroke="rgba(255,255,255,0.15)" stroke-width="1" fill="none"/>
+        </svg>
+        <h3>CRÉATION VISUELLE</h3>
+        <ul>
+          <li>CANVA PRO</li>
+        
+          
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE -->
+  <section class="quote-section">
+    <p class="quote-text">"Un contenu qui ne sert pas la communauté ne sert personne. Créer, c'est construire du lien."</p>
+    <div class="quote-attr">— DANY CAPTIONE / MANIFESTE CRÉATIF</div>
+  </section>
+
+  <footer>
+    <div class="copy">© DANY CAPTIONE. TOUS DROITS RÉSERVÉS</div>
+    <div class="meta-row">
+      <span class="meta-item">REAL MAKER</span>
+      <span class="meta-item">FREELANCE</span>
+      <span class="meta-item">DISPONIBLE</span>
+    </div>
+    <div class="socials">
+      <a class="social" href="#">@INSTAGRAM</a>
+      <a class="social" href="#">TIKTOK</a>
+      <a class="social" href="#">@FACEBOOK</a>
+    </div>
+  </footer>
+</div>
+
+<!-- ═══════════════════════════════════
+     PAGE RÉALISATIONS
+═══════════════════════════════════ -->
+<div id="page-studio" class="page">
+  <div class="studio-header">
+    <div class="studio-eyebrow">PORTFOLIO VIDÉO & CONTENU 2024</div>
+    <div class="studio-title-wrap">
+      <div class="studio-title">RÉAL // <span>ARCHIVES</span></div>
+      <div class="studio-loc">
+        <div class="label">SPÉCIALITÉ</div>
+        VIDEO · SOCIAL · CONTENT
+      </div>
+    </div>
+  </div>
+
+  <div class="studio-masonry">
+
+    <!-- Carte principale -->
+    <div class="studio-card sc-main">
+      <div class="studio-img-ph sc-main" style="display:flex;align-items:center;justify-content:center;">
+        <svg width="60" height="80" viewBox="0 0 60 80" fill="none" opacity="0.12">
+          <rect x="5" y="15" width="50" height="50" rx="3" stroke="white" stroke-width="1"/>
+          <polygon points="25,30 25,50 45,40" fill="rgba(255,255,255,0.3)"/>
+        </svg>
+      </div>
+      <div class="studio-card-label">
+        <h3>Aftermovie — Festival Lumière</h3>
+        <div class="studio-card-meta">
+          DURÉE &nbsp;4:22 &nbsp;&nbsp;|&nbsp;&nbsp; FORMAT &nbsp;16:9 &nbsp;&nbsp;|&nbsp;&nbsp; MONTAGE + COLOR
+        </div>
+      </div>
+      <div class="play-btn"></div>
+      <div class="studio-arrow">↗</div>
+      <div class="studio-card-overlay"></div>
+    </div>
+
+    <!-- Reel marque -->
+    <div class="studio-card sc-side1">
+      <div class="studio-img-ph sc-side1" style="display:flex;align-items:center;justify-content:center;">
+        <svg width="36" height="60" viewBox="0 0 36 60" fill="none" opacity="0.12">
+          <rect x="3" y="3" width="30" height="54" rx="5" stroke="white" stroke-width="1"/>
+          <polygon points="14,24 14,36 25,30" fill="rgba(255,255,255,0.3)"/>
+        </svg>
+      </div>
+      <div class="studio-card-tag">REEL MARQUE</div>
+      <div class="studio-card-ref">FORMAT 9:16 &nbsp;|&nbsp; 30 SEC &nbsp;|&nbsp; INSTAGRAM</div>
+      <div class="play-btn"></div>
+      <div class="studio-card-overlay"></div>
+    </div>
+
+    <!-- CM strategy -->
+    <div class="studio-card sc-side2">
+      <div class="studio-img-ph sc-side2" style="display:flex;align-items:center;justify-content:center;">
+        <svg width="60" height="40" viewBox="0 0 60 40" fill="none" opacity="0.12">
+          <rect x="2" y="5" width="18" height="12" rx="1" stroke="white" stroke-width="0.8"/>
+          <rect x="22" y="5" width="18" height="12" rx="1" stroke="white" stroke-width="0.8"/>
+          <rect x="42" y="5" width="16" height="12" rx="1" stroke="white" stroke-width="0.8"/>
+          <rect x="2" y="20" width="18" height="12" rx="1" stroke="white" stroke-width="0.8"/>
+          <rect x="22" y="20" width="18" height="12" rx="1" stroke="white" stroke-width="0.8"/>
+          <rect x="42" y="20" width="16" height="12" rx="1" stroke="white" stroke-width="0.8"/>
+        </svg>
+      </div>
+      <div class="studio-card-label" style="left:1rem;bottom:1rem;">
+        <div style="font-size:0.5rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(255,255,255,0.3);">STRATÉGIE</div>
+        <h3 style="font-size:1rem;">Planning Éditorial</h3>
+      </div>
+      <div class="studio-card-overlay"></div>
+    </div>
+
+    <!-- Court format -->
+    <div class="studio-card sc-center" style="position:relative;">
+      <div class="studio-img-ph sc-center" style="display:flex;align-items:center;justify-content:center;">
+        <svg width="40" height="70" viewBox="0 0 40 70" fill="none" opacity="0.12">
+          <rect x="3" y="3" width="34" height="64" rx="5" stroke="white" stroke-width="1"/>
+          <polygon points="15,28 15,42 28,35" fill="rgba(255,255,255,0.3)"/>
+        </svg>
+      </div>
+      <div class="studio-card-label">
+        <h3>TikTok Series</h3>
+      </div>
+      <div class="studio-card-ref" style="top:1rem;right:1rem;bottom:auto;">+280K VUES CUMULÉES</div>
+      <div class="play-btn"></div>
+      <div class="studio-card-overlay"></div>
+    </div>
+
+    <!-- Métriques -->
+    <div class="sc-metrics-card">
+      <div class="metric-item">
+        <div class="metric-val">280<span>K</span></div>
+        <div class="metric-label">VUES CUMULÉES — TIKTOK 2024</div>
+      </div>
+      <div class="metric-item">
+        <div class="metric-val">+<span>40</span></div>
+        <div class="metric-label">PROJETS VIDÉO MONTÉS</div>
+      </div>
+      <div class="metric-item">
+        <div class="metric-val">8<span>%</span></div>
+        <div class="metric-label">TAUX D'ENGAGEMENT MOYEN</div>
+      </div>
+    </div>
+
+    <!-- Long format -->
+    <div class="studio-card" style="grid-column:2;">
+      <div class="studio-img-ph" style="height:340px;background:linear-gradient(160deg,#2a1520 0%,#180a12 100%);display:flex;align-items:center;justify-content:center;">
+        <svg width="60" height="80" viewBox="0 0 60 80" fill="none" opacity="0.15">
+          <rect x="4" y="8" width="52" height="64" rx="3" stroke="white" stroke-width="1"/>
+          <polygon points="22,28 22,52 42,40" fill="rgba(255,255,255,0.3)"/>
+          <line x1="10" y1="60" x2="50" y2="60" stroke="white" stroke-width="0.5"/>
+          <line x1="10" y1="65" x2="35" y2="65" stroke="white" stroke-width="0.5"/>
+        </svg>
+      </div>
+      <div class="studio-card-label">
+        <div style="background:rgba(10,10,10,0.85);padding:0.5rem 0.8rem;display:inline-block;">
+          <div style="font-size:0.45rem;letter-spacing:0.2em;color:var(--rose);text-transform:uppercase;margin-bottom:0.2rem;">SÉRIE // LONG FORMAT</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--blanc);">Documentaire Court</div>
+        </div>
+      </div>
+      <div class="play-btn"></div>
+      <div class="studio-card-overlay"></div>
+    </div>
+
+    <!-- Data card -->
+    <div class="sc-data-card">
+      <div class="color-swatches">
+        <div class="swatch" style="background:#1a1a1a;border:1px solid rgba(255,255,255,0.1)"></div>
+        <div class="swatch" style="background:#333"></div>
+        <div class="swatch" style="background:var(--rose)"></div>
+      </div>
+      <div class="data-row">
+        <div>
+          <div class="data-label">PLATEFORMES</div>
+          <div class="data-val">IG · TK · YT · FB </div>
+        </div>
+        <div>
+          <div class="data-label">WORKFLOW</div>
+          <div class="data-val">RUSH → MONTAGE → EXPORT</div>
+        </div>
+      </div>
+      <blockquote>"Un Reel, c'est 30 secondes pour convaincre. Chaque image compte. Chaque son compte. Chaque silence aussi."</blockquote>
+    </div>
+
+  </div>
+
+  <div class="studio-pagination">
+    <div class="pag-btn">← PRÉCÉDENT</div>
+    <div style="display:flex;gap:0.5rem;align-items:center;">
+      <div class="pag-dot active"></div>
+      <div class="pag-dot"></div>
+      <div class="pag-dot"></div>
+    </div>
+    <div class="pag-btn">SUIVANT →</div>
+  </div>
+
+  <footer>
+    <div class="copy">© DANY CAPTIONE. TOUS DROITS RÉSERVÉS</div>
+    <div class="meta-row">
+      <span class="meta-item">REAL MAKER</span>
+      <span class="meta-item">CONTENU ORIGINAL</span>
+      <span class="meta-item">FREELANCE</span>
+    </div>
+    <div class="socials">
+      <a class="social" href="#">@INSTAGRAM</a>
+      <a class="social" href="#">TIKTOK</a>
+    </div>
+  </footer>
+</div>
+
+<!-- ═══════════════════════════════════
+     PAGE CONTACT
+═══════════════════════════════════ -->
+<div id="page-contact" class="page">
+
+  <div class="contact-hero">
+    <div>
+      <div style="display:flex;align-items:center;gap:0.8rem;font-size:0.58rem;letter-spacing:0.3em;text-transform:uppercase;color:rgba(255,255,255,0.25);margin-bottom:1rem;">
+        <span style="width:1.5rem;height:1px;background:rgba(255,255,255,0.2);display:inline-block;"></span>
+        PROTOCOLE DE CONTACT
+      </div>
+      <div class="contact-title">CONNEXION //<br>FLUX</div>
+    </div>
+    <div class="contact-status">
+      <div class="status-label">DISPONIBILITÉ</div>
+      <div class="status-val"><span class="status-dot"></span>FREELANCE OPEN</div>
+      <div style="margin-top:0.5rem;">
+        <div class="status-label">MODE</div>
+        <div class="status-val">REMOTE / HYBRIDE</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-main">
+    <div class="contact-img-wrap">
+      <div class="contact-portrait" style="display:flex;align-items:center;justify-content:center;">
+        <svg width="80" height="110" viewBox="0 0 80 110" fill="none" opacity="0.12">
+          <ellipse cx="40" cy="30" rx="20" ry="22" stroke="white" stroke-width="1"/>
+          <path d="M 5 105 Q 40 75 75 105" stroke="white" stroke-width="1" fill="none"/>
+        </svg>
+      </div>
+      <div class="contact-meta-badge">
+        <div class="m-label">POUR QUI ?</div>
+        <div class="m-val">MARQUES · CRÉATEURS<br>AGENCES · ARTISTES</div>
+      </div>
+    </div>
+  <!-- Dans votre template Django -->
+<div class="contact-form-wrap">
+    <div class="form-eyebrow">TRANSMISSION INITIALE</div>
+    <div class="form-title">Parlons de ton projet</div>
+
+    <form method="post">
+        {% csrf_token %}
+        
+        <!-- Affichage des erreurs globales -->
+        {% if form.errors %}
+            <div class="alert alert-error">
+                <ul>
+                    {% for field in form %}
+                        {% for error in field.errors %}
+                            <li>{{ field.label }} : {{ error }}</li>
+                        {% endfor %}
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+
+        <!-- Ligne IDENTITÉ et EMAIL -->
+        <div class="form-row" style="margin-bottom:1.5rem;">
+            <div>
+                {{ form.identite.label_tag }}
+                {{ form.identite }}
+            </div>
+            <div>
+                {{ form.email.label_tag }}
+                {{ form.email }}
+            </div>
+        </div>
+
+        <!-- TYPE DE PROJET -->
+        <div class="form-field">
+            {{ form.type_projet.label_tag }}
+            {{ form.type_projet }}
+        </div>
+
+        <!-- MESSAGE -->
+        <div class="form-field">
+            {{ form.message.label_tag }}
+            {{ form.message }}
+        </div>
+
+        <!-- FOOTER -->
+        <div class="form-footer">
+            <div class="privacy-check">
+                {{ form.accepte_donnees }}
+                {{ form.accepte_donnees.label_tag }}
+            </div>
+            <button type="submit" class="btn-submit">ENVOYER</button>
+        </div>
+    </form>
+</div>
+    
+  <div class="contact-info">
+    <div class="info-group">
+      <h4>
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1" y="1" width="5" height="5" stroke="rgba(255, 49, 3, 0.5)" stroke-width="1"/><rect x="8" y="1" width="5" height="5" stroke="rgba(232,160,144,0.5)" stroke-width="1"/><rect x="1" y="8" width="5" height="5" stroke="rgba(232,160,144,0.5)" stroke-width="1"/><rect x="8" y="8" width="5" height="5" stroke="rgba(232,160,144,0.5)" stroke-width="1"/></svg>
+        COORDONNÉES
+      </h4>
+      <div class="info-item">
+        <div class="i-label">EMAIL</div>
+        <div class="i-val">contact@danycaptione.com</div>
+      </div>
+      <div class="info-item">
+        <div class="i-label">RÉPONSE ESTIMÉE</div>
+        <div class="i-val">24–48 HEURES</div>
+      </div>
+    </div>
+    <div class="info-group">
+      <h4>
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M 7 1 L 13 7 L 7 13 L 1 7 Z" stroke="rgba(232,160,144,0.5)" stroke-width="1"/></svg>
+        RÉSEAUX
+      </h4>
+      <div class="info-item">
+        <div class="i-label">INSTAGRAM</div>
+        <div class="i-val">@dany_caption</div>
+      </div>
+      <div class="info-item">
+        <div class="i-label">TIKTOK</div>
+        <div class="i-val">@danycaption</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-footer-strips">
+    <div class="strip-item">
+      <svg class="strip-icon" viewBox="0 0 20 20" fill="none"><rect x="2" y="4" width="16" height="12" rx="1" stroke="white" stroke-width="1"/><path d="M 2 7 L 10 12 L 18 7" stroke="white" stroke-width="1"/></svg>
+      <div class="strip-text">DISPONIBLE POUR DES MISSIONS PONCTUELLES ET DES COLLABORATIONS LONG TERME.</div>
+    </div>
+    <div class="strip-item">
+      <svg class="strip-icon" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="white" stroke-width="1"/><path d="M 10 5 L 10 10 L 14 12" stroke="white" stroke-width="1"/></svg>
+      <div class="strip-text">DÉLAI DE LIVRAISON ADAPTÉ À CHAQUE PROJET. DEVIS GRATUIT SOUS 48H.</div>
+    </div>
+    <div class="strip-item">
+      <svg class="strip-icon" viewBox="0 0 20 20" fill="none"><rect x="2" y="2" width="7" height="7" stroke="white" stroke-width="1"/><rect x="11" y="2" width="7" height="7" stroke="white" stroke-width="1"/><rect x="2" y="11" width="7" height="7" stroke="white" stroke-width="1"/><rect x="11" y="11" width="7" height="7" stroke="white" stroke-width="1"/></svg>
+      <div class="strip-text">TRAVAIL REMOTE POSSIBLE. TARIFS ADAPTÉS AUX PETITES STRUCTURES ET INDÉPENDANTS.</div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="copy">© DANY CAPTIONE. TOUS DROITS RÉSERVÉS</div>
+    <div class="meta-row">
+      <span class="meta-item">REAL MAKER</span>
+      <span class="meta-item">FREELANCE OPEN</span>
+      <span class="meta-item">REMOTE / HYBRIDE</span>
+    </div>
+  </footer>
+</div>
+
+<script>
+  function showPage(name) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById('page-' + name).classList.add('active');
+    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+    const map = { galerie: 0, studio: 1, apropos: 2 };
+    const links = document.querySelectorAll('.nav-link');
+    if (map[name] !== undefined) links[map[name]].classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    return false;
+  }
+
+  document.querySelectorAll('.nav-link').forEach((link, i) => {
+    const pages = ['galerie', 'studio', 'apropos'];
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      showPage(pages[i]);
+    });
+  });
+</script>
+</body>
+</html>

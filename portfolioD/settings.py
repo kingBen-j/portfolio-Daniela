@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-y97sg7s5#h_&n8^m6qtiymyiyc+rludr@(7oot)1y-80hfg&7x
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['portfolio-daniela-production.up.railway.app', 'localhost', '127.0.0.1'] #pour le déploiement sur Railway, ajouter le nom de domaine fourni par Railway
 
 
 # Application definition

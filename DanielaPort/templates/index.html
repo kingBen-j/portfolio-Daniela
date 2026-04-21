@@ -37,7 +37,7 @@
       backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(255,255,255,0.06);
       position: fixed; top: 0; width: 100%; z-index: 100;
-      padding: 0 2.5rem;
+      padding: 0 1.5rem;
       height: 60px;
     }
     .logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; letter-spacing: 0.15em; color: var(--blanc); }
@@ -48,7 +48,7 @@
       text-transform: uppercase;
       color: rgba(200,200,200,0.7);
       transition: color 0.3s;
-      padding: 0 1rem;
+      padding: 0 0.7rem;
     }
     .nav-link:hover, .nav-link.active { color: var(--blanc); }
     .nav-link.active { border-bottom: 1px solid var(--rose); padding-bottom: 2px; }
@@ -59,7 +59,7 @@
       background: var(--noir);
       position: relative;
       display: flex; align-items: flex-end;
-      padding-bottom: 5rem;
+      padding-bottom: 4rem;
       overflow: hidden;
     }
     .hero-bg {
@@ -78,13 +78,16 @@
 
     /* Timeline ticker en haut */
     .hero-ticker {
-      position: absolute; top: 80px; left: 0; right: 0;
+      position: absolute; top: 60px; left: 0; right: 0;
       border-top: 1px solid rgba(255,255,255,0.06);
       border-bottom: 1px solid rgba(255,255,255,0.06);
-      padding: 0.45rem 2.5rem;
-      display: flex; align-items: center; gap: 3rem;
-      overflow: hidden;
+      padding: 0.45rem 1.5rem;
+      display: flex; align-items: center; gap: 1.5rem;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
     }
+    .hero-ticker::-webkit-scrollbar { display: none; }
     .ticker-item {
       font-size: 0.52rem; letter-spacing: 0.2em; text-transform: uppercase;
       color: rgba(255,255,255,0.25); white-space: nowrap;
@@ -92,32 +95,33 @@
     }
     .ticker-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--rose); flex-shrink: 0; }
 
-    .hero-content { position: relative; z-index: 2; padding: 0 2.5rem; }
+    .hero-content { position: relative; z-index: 2; padding: 0 1.5rem; width: 100%; }
     .hero-eyebrow {
       font-size: 0.62rem; letter-spacing: 0.3em; text-transform: uppercase;
       color: rgba(255,255,255,0.4); margin-bottom: 0.75rem;
     }
     .hero-title-main {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(3.5rem, 12vw, 9rem);
+      font-size: clamp(3rem, 15vw, 9rem);
       line-height: 0.9;
       color: var(--blanc);
       letter-spacing: 0.01em;
+      display: block;
     }
     .hero-title-accent {
       font-family: 'Cormorant Garamond', serif;
       font-style: italic;
-      font-size: clamp(3.5rem, 12vw, 9rem);
+      font-size: clamp(3rem, 15vw, 9rem);
       line-height: 0.9;
       color: var(--rose);
       letter-spacing: 0.01em;
+      display: block;
     }
     .hero-sub {
       font-size: 0.75rem; letter-spacing: 0.25em;
       text-transform: uppercase; color: rgba(255,255,255,0.4);
       margin-top: 0.5rem;
     }
-    /* Tags de rôles sous le titre */
     .hero-roles {
       display: flex; gap: 0.6rem; flex-wrap: wrap;
       margin-top: 1.5rem;
@@ -133,9 +137,17 @@
     /* ─── SECTION VISION ─── */
     .section-optique {
       background: var(--noir);
-      padding: 6rem 2.5rem;
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 4rem; align-items: center;
+      padding: 5rem 1.5rem;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+    @media (min-width: 768px) {
+      .section-optique {
+        padding: 6rem 2.5rem;
+        grid-template-columns: 1fr 1fr;
+      }
     }
     .optique-text .label {
       font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase;
@@ -145,7 +157,7 @@
     .optique-text .label::before { content: ''; width: 2rem; height: 1px; background: var(--rose); }
     .optique-title {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-size: clamp(2rem, 8vw, 4.5rem);
       color: var(--blanc); letter-spacing: 0.05em;
       margin-bottom: 1.5rem;
     }
@@ -179,24 +191,23 @@
     .tl-clip { position: absolute; top: 0; height: 100%; background: rgba(250,0,0,0.8); }
     .tl-clip2 { position: absolute; top: 0; height: 100%; background: rgba(200,150,100,0.5); }
     .tl-timecode { font-size: 0.4rem; letter-spacing: 0.1em; color: rgba(255,255,255,0.2); width: 3rem; text-align: right; flex-shrink: 0; font-family: 'Courier New', monospace; }
-    .tl-playhead {
-      position: absolute; top: -4px; bottom: -4px; width: 1px; background: var(--rose);
-      left: 38%;
-    }
+    .tl-playhead { position: absolute; top: -4px; bottom: -4px; width: 1px; background: var(--rose); left: 38%; }
     .tl-playhead::before { content: '▼'; position: absolute; top: -8px; left: -4px; font-size: 8px; color: var(--rose); }
     .tl-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.2rem; padding-bottom: 0.8rem; border-bottom: 1px solid rgba(255,255,255,0.06); }
     .tl-header-title { font-size: 0.5rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.3); }
     .tl-timecode-main { font-family: 'Courier New', monospace; font-size: 0.65rem; color: var(--rose); letter-spacing: 0.1em; }
-    .tl-footer { margin-top: 1.2rem; padding-top: 0.8rem; border-top: 1px solid rgba(255,255,255,0.06); display: flex; justify-content: space-between; align-items: center; }
+    .tl-footer { margin-top: 1.2rem; padding-top: 0.8rem; border-top: 1px solid rgba(255,255,255,0.06); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; }
     .tl-stat { text-align: center; }
     .tl-stat-val { font-size: 0.7rem; color: rgba(255,255,255,0.5); font-family: 'Courier New', monospace; }
     .tl-stat-label { font-size: 0.4rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.2); }
 
     /* ─── SERVICES / EXPERTISES ─── */
-    .section-galerie { background: var(--noir); padding: 6rem 2.5rem; }
+    .section-galerie { background: var(--noir); padding: 5rem 1.5rem; }
+    @media (min-width: 768px) { .section-galerie { padding: 6rem 2.5rem; } }
+
     .section-header {
       display: flex; align-items: baseline; justify-content: space-between;
-      margin-bottom: 2.5rem;
+      margin-bottom: 2.5rem; flex-wrap: wrap; gap: 0.5rem;
     }
     .section-label {
       font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase;
@@ -204,7 +215,7 @@
     }
     .section-title {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-size: clamp(2rem, 7vw, 3.5rem);
       color: var(--blanc); letter-spacing: 0.04em;
     }
     .section-collection {
@@ -215,9 +226,14 @@
     /* Grid de services */
     .services-grid {
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      grid-template-rows: auto auto;
+      grid-template-columns: 1fr;
       gap: 0.5rem;
+    }
+    @media (min-width: 640px) {
+      .services-grid {
+        grid-template-columns: 1.2fr 0.8fr;
+        grid-template-rows: auto auto;
+      }
     }
     .service-card {
       position: relative; overflow: hidden;
@@ -227,7 +243,8 @@
       transition: border-color 0.3s;
     }
     .service-card:hover { border-color: rgba(250,0,0,0.2); }
-    .service-card-main { grid-row: span 2; padding: 2.5rem; }
+    .service-card-main { padding: 2.5rem; }
+    @media (min-width: 640px) { .service-card-main { grid-row: span 2; } }
 
     .service-num { font-family: 'Cormorant Garamond', serif; font-size: 0.65rem; color: rgba(255,255,255,0.15); letter-spacing: 0.2em; margin-bottom: 1.5rem; }
     .service-icon { margin-bottom: 1.5rem; opacity: 0.6; }
@@ -237,7 +254,6 @@
     .service-tag { font-size: 0.47rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.3); border: 1px solid rgba(255,255,255,0.08); padding: 0.2rem 0.5rem; }
     .service-tag.hot { border-color: rgba(250,0,0,0.3); color: rgba(250,0,0,0.6); }
 
-    /* Stats bar */
     .service-stat-row { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.5rem; }
     .service-stat-label { font-size: 0.45rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.2); width: 5.5rem; }
     .service-stat-bar { flex: 1; height: 2px; background: rgba(255,255,255,0.06); }
@@ -247,22 +263,23 @@
     /* ─── BAND ─── */
     .archi-band {
       background: var(--gris);
-      padding: 3rem 2.5rem;
+      padding: 2rem 1.5rem;
       display: flex; align-items: center; justify-content: space-between;
       border-top: 1px solid rgba(255,255,255,0.05);
       border-bottom: 1px solid rgba(255,255,255,0.05);
       overflow: hidden; position: relative;
     }
+    @media (min-width: 768px) { .archi-band { padding: 3rem 2.5rem; } }
     .archi-text-big {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(4rem, 12vw, 9rem);
+      font-size: clamp(3rem, 12vw, 9rem);
       color: rgba(255,255,255,0.05);
       letter-spacing: 0.05em;
       white-space: nowrap;
     }
     .archi-right {
       text-align: right;
-      flex-shrink: 0; margin-left: 2rem;
+      flex-shrink: 0; margin-left: 1rem;
     }
     .archi-right .label { font-size: 0.55rem; letter-spacing: 0.3em; color: rgba(255,255,255,0.3); margin-bottom: 0.5rem; }
     .archi-right .desc { font-size: 0.65rem; letter-spacing: 0.1em; color: rgba(255,255,255,0.4); }
@@ -270,14 +287,23 @@
     /* ─── REJOINDRE ─── */
     .section-rejoindre {
       background: var(--noir);
-      padding: 5rem 2.5rem;
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 4rem; align-items: center;
+      padding: 4rem 1.5rem;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
       border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    @media (min-width: 768px) {
+      .section-rejoindre {
+        padding: 5rem 2.5rem;
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+        align-items: center;
+      }
     }
     .rejoindre-left h2 {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-size: clamp(2rem, 7vw, 3.5rem);
       color: var(--blanc); letter-spacing: 0.04em;
       margin-bottom: 1rem;
     }
@@ -288,17 +314,18 @@
       background: var(--gris2);
       border: 1px solid rgba(255,255,255,0.08);
       color: var(--blanc);
-      padding: 0.9rem 1.2rem;
+      padding: 0.9rem 1rem;
       font-size: 0.75rem; letter-spacing: 0.1em;
       outline: none;
       font-family: 'DM Sans', sans-serif;
+      min-width: 0;
     }
     .join-input::placeholder { color: rgba(255,255,255,0.25); }
     .join-btn {
       background: var(--rose);
       color: #1a0a08;
       border: none;
-      padding: 0.9rem 1.5rem;
+      padding: 0.9rem 1.2rem;
       font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
       font-weight: 500; cursor: pointer;
       transition: background 0.3s;
@@ -313,9 +340,18 @@
     .page.active { display: block; }
 
     .apropos-hero {
-      padding: 120px 2.5rem 5rem;
-      display: grid; grid-template-columns: 1fr auto;
-      gap: 4rem; align-items: start;
+      padding: 80px 1.5rem 4rem;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+    @media (min-width: 768px) {
+      .apropos-hero {
+        padding: 120px 2.5rem 5rem;
+        grid-template-columns: 1fr auto;
+        gap: 4rem;
+      }
     }
     .apropos-eyebrow {
       font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase;
@@ -323,12 +359,12 @@
     }
     .apropos-title {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(3rem, 10vw, 7rem);
+      font-size: clamp(3rem, 12vw, 7rem);
       color: var(--blanc); line-height: 0.85; margin-bottom: 0.2rem;
     }
     .apropos-title-italic {
       font-family: 'Cormorant Garamond', serif;
-      font-style: italic; font-size: clamp(2.5rem, 8vw, 6rem);
+      font-style: italic; font-size: clamp(2.5rem, 10vw, 6rem);
       color: var(--rose); line-height: 0.9; margin-bottom: 2.5rem;
     }
     .apropos-intro p {
@@ -344,9 +380,13 @@
     .btn-contact:hover { background: #d4806a; }
 
     .portrait-wrap {
-      width: 260px; flex-shrink: 0;
+      width: 100%;
+      max-width: 260px;
+      flex-shrink: 0;
       position: relative;
+      margin: 0 auto;
     }
+    @media (min-width: 768px) { .portrait-wrap { width: 260px; margin: 0; } }
     .portrait-img {
       width: 100%;
       aspect-ratio: 3/4;
@@ -363,27 +403,32 @@
     /* Rôles / Stack */
     .arsenal-section {
       background: var(--gris);
-      padding: 5rem 2.5rem;
+      padding: 4rem 1.5rem;
       border-top: 1px solid rgba(255,255,255,0.06);
     }
+    @media (min-width: 768px) { .arsenal-section { padding: 5rem 2.5rem; } }
     .arsenal-label {
       font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase;
       color: rgba(255,255,255,0.3); margin-bottom: 0.6rem;
     }
     .arsenal-title {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(2.5rem, 7vw, 5rem);
+      font-size: clamp(2rem, 9vw, 5rem);
       color: var(--blanc); letter-spacing: 0.04em;
       margin-bottom: 0.5rem;
     }
     .arsenal-desc {
       font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
-      color: rgba(255,255,255,0.3); max-width: 50%; margin-bottom: 3rem; line-height: 1.7;
+      color: rgba(255,255,255,0.3); max-width: 100%; margin-bottom: 2.5rem; line-height: 1.7;
     }
+    @media (min-width: 768px) { .arsenal-desc { max-width: 50%; } }
     .arsenal-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
+      display: grid;
+      grid-template-columns: 1fr;
       gap: 0.5rem;
     }
+    @media (min-width: 480px) { .arsenal-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 900px) { .arsenal-grid { grid-template-columns: repeat(3, 1fr); } }
     .arsenal-card {
       background: var(--gris2);
       border: 1px solid rgba(255,255,255,0.05);
@@ -412,13 +457,14 @@
     /* Quote */
     .quote-section {
       background: var(--gris2);
-      padding: 6rem 2.5rem;
+      padding: 5rem 1.5rem;
       text-align: center;
       border-top: 1px solid rgba(255,255,255,0.05);
     }
+    @media (min-width: 768px) { .quote-section { padding: 6rem 2.5rem; } }
     .quote-text {
       font-family: 'Cormorant Garamond', serif;
-      font-style: italic; font-size: clamp(1.5rem, 4vw, 2.5rem);
+      font-style: italic; font-size: clamp(1.2rem, 4vw, 2.5rem);
       color: var(--rose); line-height: 1.4;
       max-width: 700px; margin: 0 auto 2rem;
     }
@@ -431,8 +477,9 @@
        STUDIO / RÉALISATIONS
     ═══════════════════════════════════ */
     .studio-header {
-      padding: 120px 2.5rem 4rem;
+      padding: 80px 1.5rem 3rem;
     }
+    @media (min-width: 768px) { .studio-header { padding: 120px 2.5rem 4rem; } }
     .studio-eyebrow {
       display: flex; align-items: center; gap: 0.8rem;
       font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase;
@@ -441,11 +488,11 @@
     .studio-eyebrow::before { content: '—'; color: var(--rose); }
     .studio-title-wrap {
       display: flex; align-items: baseline;
-      justify-content: space-between;
+      justify-content: space-between; flex-wrap: wrap; gap: 0.5rem;
     }
     .studio-title {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(3rem, 10vw, 7rem);
+      font-size: clamp(2.5rem, 10vw, 7rem);
       color: var(--blanc); letter-spacing: 0.03em;
     }
     .studio-title span { color: var(--rose); font-family: 'Cormorant Garamond', serif; font-style: italic; }
@@ -456,11 +503,17 @@
     .studio-loc .label { color: rgba(255,255,255,0.15); font-size: 0.5rem; margin-bottom: 0.3rem; }
 
     .studio-masonry {
-      padding: 0 2.5rem 6rem;
+      padding: 0 1.5rem 5rem;
       display: grid;
-      grid-template-columns: 1fr 0.7fr;
-      grid-template-rows: auto auto auto;
+      grid-template-columns: 1fr;
       gap: 0.5rem;
+    }
+    @media (min-width: 640px) {
+      .studio-masonry {
+        padding: 0 2.5rem 6rem;
+        grid-template-columns: 1fr 0.7fr;
+        grid-template-rows: auto auto auto;
+      }
     }
     .studio-card {
       position: relative; overflow: hidden; background: var(--gris2); cursor: pointer;
@@ -476,22 +529,25 @@
     .sc-side2 { grid-row: 2; grid-column: 1; }
     .sc-center { grid-row: 2; grid-column: 2; }
 
-    .studio-img-ph {
-      width: 100%; display: block;
+    .studio-img-ph { width: 100%; display: block; }
+    .sc-main .studio-img-ph { height: 260px; background: linear-gradient(180deg, #2a2018 0%, #1a1510 100%); }
+    .sc-side1 .studio-img-ph { height: 260px; background: linear-gradient(135deg, #2a0f15 0%, #1a0a10 100%); }
+    .sc-side2 .studio-img-ph { height: 220px; background: linear-gradient(135deg, #1a1818 0%, #0d0d0d 100%); }
+    .sc-center .studio-img-ph { height: 220px; background: linear-gradient(180deg, #1a0a10 0%, #300818 100%); }
+    @media (min-width: 640px) {
+      .sc-main .studio-img-ph { height: 380px; }
+      .sc-side1 .studio-img-ph { height: 380px; }
+      .sc-side2 .studio-img-ph { height: 280px; }
+      .sc-center .studio-img-ph { height: 280px; }
     }
-    .sc-main .studio-img-ph { height: 380px; background: linear-gradient(180deg, #2a2018 0%, #1a1510 100%); }
-    .sc-side1 .studio-img-ph { height: 380px; background: linear-gradient(135deg, #2a0f15 0%, #1a0a10 100%); }
-    .sc-side2 .studio-img-ph { height: 280px; background: linear-gradient(135deg, #1a1818 0%, #0d0d0d 100%); }
-    .sc-center .studio-img-ph { height: 280px; background: linear-gradient(180deg, #1a0a10 0%, #300818 100%); }
 
-    .studio-card-label {
-      position: absolute; bottom: 1.5rem; left: 1.5rem;
-    }
+    .studio-card-label { position: absolute; bottom: 1.5rem; left: 1.5rem; }
     .studio-card-label h3 {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.3rem; font-weight: 400;
+      font-size: 1.1rem; font-weight: 400;
       color: var(--blanc); margin-bottom: 0.5rem;
     }
+    @media (min-width: 640px) { .studio-card-label h3 { font-size: 1.3rem; } }
     .studio-card-meta {
       font-size: 0.5rem; letter-spacing: 0.15em;
       color: rgba(255,255,255,0.4); text-transform: uppercase;
@@ -529,23 +585,15 @@
     .play-btn::after { content: '▶'; color: var(--blanc); font-size: 0.8rem; padding-left: 3px; }
     .studio-card:hover .play-btn { opacity: 1; }
 
-    .sc-data-card {
-      background: var(--gris2); padding: 1.5rem;
-    }
-    .sc-data-card .color-swatches {
-      display: flex; gap: 0.3rem; margin-bottom: 1rem;
-    }
+    .sc-data-card { background: var(--gris2); padding: 1.5rem; }
+    .sc-data-card .color-swatches { display: flex; gap: 0.3rem; margin-bottom: 1rem; }
     .swatch { width: 20px; height: 20px; }
-    .sc-data-card .data-row {
-      display: flex; gap: 2rem; margin-bottom: 0.6rem;
-    }
+    .sc-data-card .data-row { display: flex; gap: 1.5rem; margin-bottom: 0.6rem; flex-wrap: wrap; }
     .sc-data-card .data-label {
       font-size: 0.5rem; letter-spacing: 0.2em; text-transform: uppercase;
       color: rgba(255,255,255,0.3); margin-bottom: 0.2rem;
     }
-    .sc-data-card .data-val {
-      font-size: 0.65rem; letter-spacing: 0.1em; color: rgba(255,255,255,0.6);
-    }
+    .sc-data-card .data-val { font-size: 0.65rem; letter-spacing: 0.1em; color: rgba(255,255,255,0.6); }
     .sc-data-card blockquote {
       font-family: 'Cormorant Garamond', serif;
       font-style: italic; font-size: 0.7rem;
@@ -564,7 +612,7 @@
     .metric-label { font-size: 0.45rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.25); margin-top: 0.1rem; }
 
     .studio-pagination {
-      padding: 3rem 2.5rem;
+      padding: 2rem 1.5rem;
       display: flex; align-items: center; justify-content: center; gap: 2rem;
       border-top: 1px solid rgba(255,255,255,0.05);
     }
@@ -581,32 +629,41 @@
        CONTACT PAGE
     ═══════════════════════════════════ */
     .contact-hero {
-      padding: 120px 2.5rem 4rem;
+      padding: 80px 1.5rem 3rem;
       display: flex; align-items: flex-start; justify-content: space-between;
+      flex-wrap: wrap; gap: 1.5rem;
     }
+    @media (min-width: 768px) { .contact-hero { padding: 120px 2.5rem 4rem; } }
     .contact-title {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(3rem, 10vw, 7rem);
+      font-size: clamp(2.5rem, 12vw, 7rem);
       color: var(--blanc); line-height: 0.85; letter-spacing: 0.03em;
     }
-    .contact-status {
-      text-align: right; padding-top: 0.5rem;
-    }
+    .contact-status { text-align: right; padding-top: 0.5rem; }
     .contact-status .status-label { font-size: 0.5rem; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(255,255,255,0.2); }
     .contact-status .status-val { font-size: 0.65rem; letter-spacing: 0.1em; color: rgba(255,255,255,0.5); }
     .status-dot { display: inline-block; width: 6px; height: 6px; background: #4ade80; border-radius: 50%; margin-right: 0.4rem; animation: pulse 2s infinite; }
     @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
 
     .contact-main {
-      padding: 0 2.5rem 6rem;
-      display: grid; grid-template-columns: 0.9fr 1.1fr;
-      gap: 2rem; align-items: start;
+      padding: 0 1.5rem 4rem;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+    @media (min-width: 768px) {
+      .contact-main {
+        padding: 0 2.5rem 6rem;
+        grid-template-columns: 0.9fr 1.1fr;
+      }
     }
     .contact-img-wrap { position: relative; }
     .contact-portrait {
-      width: 100%; height: 420px;
+      width: 100%; height: 280px;
       background: linear-gradient(180deg, #2a2020 0%, #111 100%);
     }
+    @media (min-width: 768px) { .contact-portrait { height: 420px; } }
     .contact-meta-badge {
       position: absolute; bottom: 1.5rem; left: 1.5rem;
       background: rgba(10,10,10,0.9);
@@ -619,14 +676,20 @@
     .contact-form-wrap {
       background: var(--gris2);
       border: 1px solid rgba(255,255,255,0.06);
-      padding: 2.5rem;
+      padding: 1.5rem;
     }
+    @media (min-width: 640px) { .contact-form-wrap { padding: 2.5rem; } }
     .form-eyebrow { font-size: 0.55rem; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 0.5rem; }
     .form-title { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; color: var(--blanc); margin-bottom: 2rem; }
 
     .form-field { margin-bottom: 1.5rem; }
     .form-label { font-size: 0.5rem; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(255,255,255,0.3); display: block; margin-bottom: 0.5rem; }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    @media (min-width: 480px) { .form-row { grid-template-columns: 1fr 1fr; } }
 
     .form-input, .form-select, .form-textarea {
       width: 100%;
@@ -647,16 +710,15 @@
 
     .form-footer {
       display: flex; align-items: center; justify-content: space-between;
-      margin-top: 1.5rem;
+      margin-top: 1.5rem; flex-wrap: wrap; gap: 1rem;
     }
-    .privacy-check { display: flex; align-items: center; gap: 0.6rem; }
-    .privacy-box {
-      width: 14px; height: 14px;
-      border: 1px solid rgba(255,255,255,0.2);
-      background: rgba(255,255,255,0.05);
-      cursor: pointer; position: relative;
+    .privacy-check {
+      display: flex; align-items: center; gap: 10px;
     }
-    .privacy-box.checked::after { content: ''; position: absolute; inset: 2px; background: var(--rose); }
+    .privacy-check input[type="checkbox"] {
+      width: 20px; height: 20px; cursor: pointer;
+    }
+    .privacy-check label { cursor: pointer; margin: 0; }
     .privacy-label { font-size: 0.5rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.3); cursor: pointer; }
     .btn-submit {
       background: var(--rose);
@@ -670,9 +732,19 @@
     .btn-submit:hover { background: #d4806a; }
 
     .contact-info {
-      padding: 0 2.5rem;
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 3rem; margin-bottom: 4rem;
+      padding: 0 1.5rem;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+    @media (min-width: 640px) {
+      .contact-info {
+        padding: 0 2.5rem;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+        margin-bottom: 4rem;
+      }
     }
     .info-group h4 {
       font-family: 'Bebas Neue', sans-serif;
@@ -685,28 +757,19 @@
     .info-item .i-val { font-size: 0.8rem; color: rgba(255,255,255,0.7); }
 
     .contact-footer-strips {
-      display: grid; grid-template-columns: repeat(3,1fr);
+      display: grid;
+      grid-template-columns: 1fr;
       border-top: 1px solid rgba(255,255,255,0.06);
-      padding: 2.5rem 2.5rem 4rem;
-      gap: 2rem;
+      padding: 2rem 1.5rem 3rem;
+      gap: 1.5rem;
     }
-    /* Style pour la case à cocher */
-.privacy-check {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.privacy-check input[type="checkbox"] {
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-}
-
-.privacy-check label {
-    cursor: pointer;
-    margin: 0;
-}
+    @media (min-width: 768px) {
+      .contact-footer-strips {
+        grid-template-columns: repeat(3, 1fr);
+        padding: 2.5rem 2.5rem 4rem;
+        gap: 2rem;
+      }
+    }
     .strip-item { display: flex; align-items: flex-start; gap: 1rem; }
     .strip-icon { width: 20px; height: 20px; opacity: 0.3; flex-shrink: 0; margin-top: 2px; }
     .strip-text { font-size: 0.58rem; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.25); line-height: 1.7; }
@@ -715,15 +778,23 @@
     footer {
       background: var(--noir);
       border-top: 1px solid rgba(255,255,255,0.06);
-      padding: 1.5rem 2.5rem;
+      padding: 1.5rem;
       display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1rem;
     }
     footer .copy { font-size: 0.55rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.2); }
-    footer .meta-row { display: flex; gap: 2rem; }
+    footer .meta-row { display: flex; gap: 1.2rem; flex-wrap: wrap; }
     footer .meta-item { font-size: 0.55rem; letter-spacing: 0.12em; color: rgba(255,255,255,0.2); }
-    footer .socials { display: flex; gap: 1.5rem; }
+    footer .socials { display: flex; gap: 1.2rem; }
     footer .social { font-size: 0.55rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.25); text-decoration: none; transition: color 0.3s; }
     footer .social:hover { color: var(--rose); }
+
+    /* ─── NAV MOBILE ─── */
+    @media (max-width: 480px) {
+      .nav-link { padding: 0 0.4rem; font-size: 0.6rem; letter-spacing: 0.1em; }
+      .navbar-custom { padding: 0 1rem; }
+      .nav-sep { display: none; }
+    }
   </style>
 </head>
 <body>
@@ -735,8 +806,8 @@
     <a class="nav-link" onclick="showPage('galerie')" href="#">PORTFOLIO</a>
     <a class="nav-link" onclick="showPage('studio')" href="#">RÉALISATIONS</a>
     <a class="nav-link active" onclick="showPage('apropos')" href="#">PROFIL</a>
-    <div style="width:1px;height:16px;background:rgba(255,255,255,0.12);margin:0 1.2rem;"></div>
-    <svg width="18" height="12" viewBox="0 0 18 12" fill="none" style="cursor:pointer;opacity:0.5">
+    <div class="nav-sep" style="width:1px;height:16px;background:rgba(255,255,255,0.12);margin:0 1rem;"></div>
+    <svg width="18" height="12" viewBox="0 0 18 12" fill="none" style="cursor:pointer;opacity:0.5;flex-shrink:0;">
       <line x1="0" y1="1" x2="18" y2="1" stroke="white" stroke-width="1"/>
       <line x1="0" y1="6" x2="12" y2="6" stroke="white" stroke-width="1"/>
       <line x1="0" y1="11" x2="16" y2="11" stroke="white" stroke-width="1"/>
@@ -754,7 +825,6 @@
     <div class="hero-bg"></div>
     <div class="hero-img-wrap"><div class="hero-img-placeholder"></div></div>
 
-    <!-- Ticker style timeline -->
     <div class="hero-ticker">
       <div class="ticker-item"><div class="ticker-dot"></div>MONTAGE VIDÉO</div>
       <div class="ticker-item"><div class="ticker-dot"></div>CRÉATION DE CONTENU</div>
@@ -766,7 +836,8 @@
 
     <div class="hero-content">
       <div class="hero-eyebrow">UNIVERS DIGITAL — 2026</div>
-      <div class="hero-title-main">DANY <span class="hero-title-accent">CAPTION</span></div>
+      <span class="hero-title-main">DANY</span>
+      <span class="hero-title-accent">CAPTION</span>
       <div class="hero-sub">R E A L &nbsp; M A K E R</div>
       <div class="hero-roles">
         <div class="role-tag accent">MONTEUSE VIDÉO</div>
@@ -792,7 +863,6 @@
     </div>
     <div class="optique-img-wrap">
       <div class="lens-card">
-        <!-- Timeline vidéo simulée -->
         <div class="tl-header">
           <div class="tl-header-title">TIMELINE — SEQUENCE 01</div>
           <div class="tl-timecode-main">00:02:34:12</div>
@@ -808,7 +878,8 @@
             </div>
             <div class="tl-timecode">00:04:12</div>
           </div>
-         
+        </div>
+        <div class="tl-footer">
           <div class="tl-stat">
             <div class="tl-stat-val">4K</div>
             <div class="tl-stat-label">RÉSOLUTION</div>
@@ -993,7 +1064,6 @@
     <p class="arsenal-desc">CHAQUE OUTIL EST MAÎTRISÉ POUR SERVIR UNE SEULE CHOSE : PRODUIRE DU CONTENU QUI PERFORME ET QUI DURE.</p>
 
     <div class="arsenal-grid">
-      <!-- Montage -->
       <div class="arsenal-card">
         <div class="arsenal-num">01</div>
         <svg class="arsenal-icon" viewBox="0 0 28 28" fill="none">
@@ -1007,10 +1077,8 @@
           <li>PREMIERE PRO / RUSH</li>
           <li>DAVINCI RESOLVE</li>
           <li>CAPCUT (MOBILE & DESKTOP)</li>
-          
         </ul>
       </div>
-      <!-- Social / CM -->
       <div class="arsenal-card">
         <div class="arsenal-num">02</div>
         <svg class="arsenal-icon" viewBox="0 0 28 28" fill="none">
@@ -1025,10 +1093,8 @@
           <li>INSTAGRAM / REELS</li>
           <li>TIKTOK / SHORTS</li>
           <li>META BUSINESS SUITE</li>
-          
         </ul>
       </div>
-      <!-- Création visuelle -->
       <div class="arsenal-card">
         <div class="arsenal-num">03</div>
         <svg class="arsenal-icon" viewBox="0 0 28 28" fill="none">
@@ -1039,8 +1105,6 @@
         <h3>CRÉATION VISUELLE</h3>
         <ul>
           <li>CANVA PRO</li>
-        
-          
         </ul>
       </div>
     </div>
@@ -1084,7 +1148,6 @@
 
   <div class="studio-masonry">
 
-    <!-- Carte principale -->
     <div class="studio-card sc-main">
       <div class="studio-img-ph sc-main" style="display:flex;align-items:center;justify-content:center;">
         <svg width="60" height="80" viewBox="0 0 60 80" fill="none" opacity="0.12">
@@ -1094,16 +1157,13 @@
       </div>
       <div class="studio-card-label">
         <h3>Aftermovie — Festival Lumière</h3>
-        <div class="studio-card-meta">
-          DURÉE &nbsp;4:22 &nbsp;&nbsp;|&nbsp;&nbsp; FORMAT &nbsp;16:9 &nbsp;&nbsp;|&nbsp;&nbsp; MONTAGE + COLOR
-        </div>
+        <div class="studio-card-meta">DURÉE &nbsp;4:22 &nbsp;&nbsp;|&nbsp;&nbsp; FORMAT &nbsp;16:9 &nbsp;&nbsp;|&nbsp;&nbsp; MONTAGE + COLOR</div>
       </div>
       <div class="play-btn"></div>
       <div class="studio-arrow">↗</div>
       <div class="studio-card-overlay"></div>
     </div>
 
-    <!-- Reel marque -->
     <div class="studio-card sc-side1">
       <div class="studio-img-ph sc-side1" style="display:flex;align-items:center;justify-content:center;">
         <svg width="36" height="60" viewBox="0 0 36 60" fill="none" opacity="0.12">
@@ -1117,7 +1177,6 @@
       <div class="studio-card-overlay"></div>
     </div>
 
-    <!-- CM strategy -->
     <div class="studio-card sc-side2">
       <div class="studio-img-ph sc-side2" style="display:flex;align-items:center;justify-content:center;">
         <svg width="60" height="40" viewBox="0 0 60 40" fill="none" opacity="0.12">
@@ -1136,7 +1195,6 @@
       <div class="studio-card-overlay"></div>
     </div>
 
-    <!-- Court format -->
     <div class="studio-card sc-center" style="position:relative;">
       <div class="studio-img-ph sc-center" style="display:flex;align-items:center;justify-content:center;">
         <svg width="40" height="70" viewBox="0 0 40 70" fill="none" opacity="0.12">
@@ -1152,7 +1210,6 @@
       <div class="studio-card-overlay"></div>
     </div>
 
-    <!-- Métriques -->
     <div class="sc-metrics-card">
       <div class="metric-item">
         <div class="metric-val">280<span>K</span></div>
@@ -1168,9 +1225,8 @@
       </div>
     </div>
 
-    <!-- Long format -->
     <div class="studio-card" style="grid-column:2;">
-      <div class="studio-img-ph" style="height:340px;background:linear-gradient(160deg,#2a1520 0%,#180a12 100%);display:flex;align-items:center;justify-content:center;">
+      <div class="studio-img-ph" style="height:280px;background:linear-gradient(160deg,#2a1520 0%,#180a12 100%);display:flex;align-items:center;justify-content:center;">
         <svg width="60" height="80" viewBox="0 0 60 80" fill="none" opacity="0.15">
           <rect x="4" y="8" width="52" height="64" rx="3" stroke="white" stroke-width="1"/>
           <polygon points="22,28 22,52 42,40" fill="rgba(255,255,255,0.3)"/>
@@ -1188,7 +1244,6 @@
       <div class="studio-card-overlay"></div>
     </div>
 
-    <!-- Data card -->
     <div class="sc-data-card">
       <div class="color-swatches">
         <div class="swatch" style="background:#1a1a1a;border:1px solid rgba(255,255,255,0.1)"></div>
@@ -1198,7 +1253,7 @@
       <div class="data-row">
         <div>
           <div class="data-label">PLATEFORMES</div>
-          <div class="data-val">IG · TK · YT · FB </div>
+          <div class="data-val">IG · TK · YT · FB</div>
         </div>
         <div>
           <div class="data-label">WORKFLOW</div>
@@ -1270,62 +1325,58 @@
         <div class="m-val">MARQUES · CRÉATEURS<br>AGENCES · ARTISTES</div>
       </div>
     </div>
-  <!-- Dans votre template Django -->
-<div class="contact-form-wrap">
-    <div class="form-eyebrow">TRANSMISSION INITIALE</div>
-    <div class="form-title">Parlons de ton projet</div>
 
-    <form method="post">
+    <div class="contact-form-wrap">
+      <div class="form-eyebrow">TRANSMISSION INITIALE</div>
+      <div class="form-title">Parlons de ton projet</div>
+
+      <form method="post">
         {% csrf_token %}
-        
-        <!-- Affichage des erreurs globales -->
+
         {% if form.errors %}
-            <div class="alert alert-error">
-                <ul>
-                    {% for field in form %}
-                        {% for error in field.errors %}
-                            <li>{{ field.label }} : {{ error }}</li>
-                        {% endfor %}
-                    {% endfor %}
-                </ul>
-            </div>
+          <div class="alert alert-error" style="margin-bottom:1rem;padding:1rem;background:rgba(250,0,0,0.1);border:1px solid rgba(250,0,0,0.3);font-size:0.7rem;">
+            <ul>
+              {% for field in form %}
+                {% for error in field.errors %}
+                  <li>{{ field.label }} : {{ error }}</li>
+                {% endfor %}
+              {% endfor %}
+            </ul>
+          </div>
         {% endif %}
 
-        <!-- Ligne IDENTITÉ et EMAIL -->
         <div class="form-row" style="margin-bottom:1.5rem;">
-            <div>
-                {{ form.identite.label_tag }}
-                {{ form.identite }}
-            </div>
-            <div>
-                {{ form.email.label_tag }}
-                {{ form.email }}
-            </div>
+          <div>
+            {{ form.identite.label_tag }}
+            {{ form.identite }}
+          </div>
+          <div>
+            {{ form.email.label_tag }}
+            {{ form.email }}
+          </div>
         </div>
 
-        <!-- TYPE DE PROJET -->
         <div class="form-field">
-            {{ form.type_projet.label_tag }}
-            {{ form.type_projet }}
+          {{ form.type_projet.label_tag }}
+          {{ form.type_projet }}
         </div>
 
-        <!-- MESSAGE -->
         <div class="form-field">
-            {{ form.message.label_tag }}
-            {{ form.message }}
+          {{ form.message.label_tag }}
+          {{ form.message }}
         </div>
 
-        <!-- FOOTER -->
         <div class="form-footer">
-            <div class="privacy-check">
-                {{ form.accepte_donnees }}
-                {{ form.accepte_donnees.label_tag }}
-            </div>
-            <button type="submit" class="btn-submit">ENVOYER</button>
+          <div class="privacy-check">
+            {{ form.accepte_donnees }}
+            {{ form.accepte_donnees.label_tag }}
+          </div>
+          <button type="submit" class="btn-submit">ENVOYER</button>
         </div>
-    </form>
-</div>
-    
+      </form>
+    </div>
+  </div>
+
   <div class="contact-info">
     <div class="info-group">
       <h4>
